@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
+<<<<<<< HEAD
   test "should get create" do
     get :create
     assert_response :success
@@ -33,6 +34,30 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should get index" do
     get :index
+=======
+  test "should get index" do
+    get :index
+    assert_response :success
+  end
+
+  test "should get new" do
+    get :new
+    assert_response :success
+  end
+
+  test "should get create" do
+    get :create
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get :edit
+    assert_response :success
+  end
+
+  test "should get show" do
+    get :show
+>>>>>>> 1722f525f7d396f7a129395223ff788eb16833f6
     assert_response :success
   end
 
