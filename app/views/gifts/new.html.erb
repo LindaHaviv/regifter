@@ -1,2 +1,26 @@
-<h1>Gifts#new</h1>
-<p>Find me in app/views/gifts/new.html.erb</p>
+<%= form_for(@gift) do |f| %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :value %>
+    <%= f.integer :value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :brand %>
+    <%= f.text_field :brand %>
+  </div>
+
+<% end %>
+
+<!-- find out how to put an image in a form -->
+<!-- how to include the category into the form -->
