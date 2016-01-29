@@ -4,4 +4,5 @@
   <p>Email: <%= @user.email %></p>
   <p>Address: <%= @user.address %></p>
   <%= link_to 'Edit User', edit_user_path %>
+  <%= link_to 'Delete Profile', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
