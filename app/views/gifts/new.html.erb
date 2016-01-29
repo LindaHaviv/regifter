@@ -20,22 +20,22 @@
     <%= f.text_field :brand %>
   </div>
 
-  <div class="field">
-    <%= f.label :categories%>
-    <%= f.collection_select :id, Category.all, :id, :title%>
-  </div>
+<div class="field">
+  Pick a category for your gift!
+  <%= f.collection_select :id, Category.all, :id, :title %>
+</div>
 
-  <div class="field">
-  New Category:
+<div class="field">
+    New Category
     <%= f.fields_for :categories do |categories_form| %>
-      <%= categories_form.label :title %>
-      <%= categories_form.text_field :title %>
-  <% end %>
-  </div>
+        <%= categories_form.label :title %>
+        <%= categories_form.text_field :title %>
+    <% end %>
+ </div>
 
-  <div class="actions">
+<div class="actions">
     <%= f.submit %>
-  </div>
+</div>
 <% end %>
 
 <!-- find out how to put an image in a form -->

@@ -5,11 +5,14 @@ class GiftsController < ApplicationController
 
   def new
     @gift = Gift.new
-      # binding.pry
+    @gift.categories.build
   end
 
   def create
+    binding.pry
     @gift = Gift.create(gift_params)
+
+
   end
 
   def edit
