@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
+  get "/signup", to: "users#new", as: "signup"
+
+  get "signin", to: "sessions#new", as: "signin"
+
   resources :carrierwave_images
   resources :users, :gifts, :categories
   # The priority is based upon order of creation: first created -> highest priority.
