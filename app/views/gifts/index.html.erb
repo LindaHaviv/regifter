@@ -1,8 +1,18 @@
 <%Gift.all.each do |gift|%>
 <div>
-  <%= gift.title %>
+  <%= gift.title %><br>
+  How much? $<%= gift.value %><br>
+  <img src="<%= gift.image %>" >
+
   <% gift.categories.each do |category| %>
   <%=category.title%>
   <%end%>
 </div>
+<br>
+    <td><%= link_to 'Edit', edit_gift_path(gift) %></td>
+    <td><%= link_to 'Destroy', gift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<br>
+<br>
+<br>
+<br>
 <%end%>
