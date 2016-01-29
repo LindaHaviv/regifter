@@ -49,4 +49,3 @@ group :development do
   gem "mini_magick", "~> 3.7.0"
 
 end
-

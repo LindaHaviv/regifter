@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resources :carrierwave_images
-resources :users, :gifts, :categories
-root "gifts#new"
+  resources :users, :gifts, :categories
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
