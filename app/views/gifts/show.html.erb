@@ -1,2 +1,9 @@
-<h1>Gifts#show</h1>
-<p>Find me in app/views/gifts/show.html.erb</p>
+<div>
+  <h1><%= @gift.title %></h1>
+  <p>Description: <%= @gift.description %></p>
+  <p>Value: <%= @gift.value %></p>
+  <p>Brand: <%= @gift.brand %></p>
+  <img src= "<%= @gift.image%>"
+  <p>View other gifts owned by link_to "<%=@gift.user.name%>", @user
+<%=@gift.user.name %> </p>
+</div>
