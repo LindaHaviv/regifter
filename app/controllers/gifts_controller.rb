@@ -11,8 +11,6 @@ class GiftsController < ApplicationController
   def create
     binding.pry
     @gift = Gift.create(gift_params)
-
-
   end
 
   def edit
