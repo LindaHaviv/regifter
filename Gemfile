@@ -43,5 +43,10 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  #upload images and more
+  gem "carrierwave", "~> 0.10.0"
+  gem "mini_magick", "~> 3.7.0"
+
 end
 
