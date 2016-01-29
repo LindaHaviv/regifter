@@ -7,7 +7,7 @@
 
   <div class="field">
     <%= f.label :value %>
-    <%= f.integer :value %>
+    <%= f.number_field :value %>
   </div>
 
   <div class="field">
@@ -20,6 +20,22 @@
     <%= f.text_field :brand %>
   </div>
 
+<div class="field">
+  Pick a category for your gift!
+  <%= f.collection_select :id, Category.all, :id, :title %>
+</div>
+
+<div class="field">
+    New Category
+    <%= f.fields_for :categories do |categories_form| %>
+        <%= categories_form.label :title %>
+        <%= categories_form.text_field :title %>
+    <% end %>
+ </div>
+
+<div class="actions">
+    <%= f.submit %>
+</div>
 <% end %>
 
 <!-- find out how to put an image in a form -->
