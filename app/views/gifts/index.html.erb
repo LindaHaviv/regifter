@@ -7,7 +7,7 @@
 <br>
 <%Gift.all.each do |gift|%>
 <div id= "gift" >
-  <%= gift.title %><br>
+  <%= link_to  gift.title, gift_path(gift) %><br>
   How much? $<%= gift.value %><br>
   <% if logged_in? %>
   <%= link_to 'Edit', edit_gift_path(gift) %>
