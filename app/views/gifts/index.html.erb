@@ -1,6 +1,5 @@
 
-<% if logged_in? %> <%= link_to "Share your garbage with the world!!", new_gift_path%><br>
-<%end%>
+
 <br>
 <br>
 <br>
@@ -9,16 +8,18 @@
 <div id= "gift" >
   <%= link_to  gift.title, gift_path(gift) %><br>
   How much? $<%= gift.value %><br>
+  Categories:
+  <% gift.categories.each do |category| %>
+  <%=category.title%>
+  <br>
+  <%end%>
   <% if logged_in? %>
   <%= link_to 'Edit', edit_gift_path(gift) %>
   <%= link_to 'Destroy', gift, method: :delete, data: { confirm: 'Are you sure?' } %><br>
   <%end%>
 
-  <%= image_tag gift.image, size:"200x200", class:"style_image"  %>
+  <%= image_tag gift.image, size:"200x200", class:"style_image"  %><br>
 
-    <% gift.categories.each do |category| %>
-    <%=category.title%>
-    <%end%>
 </div>
 
 <%end%>

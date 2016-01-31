@@ -9,7 +9,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user),:notice => "Thank you for signing up to Regifter, #{@user.username}!"
+      binding.pry
+      redirect_to @user,:notice => "Thank you for signing up to Regifter, #{@user.username}!"
     else
       redirect_to signup_path
     end
