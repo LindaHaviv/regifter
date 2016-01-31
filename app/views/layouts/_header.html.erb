@@ -13,3 +13,13 @@
   <%= link_to "Sign In", signin_path %>
   <%= link_to "Sign Up", signup_path %>
 <%end%>
+
+
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:query, "Search for regifts:") %>
+  <%= text_field_tag :query, params[:query], placeholder: "I want to find..."%>
+  <%= submit_tag("Search") %>
+<% end %>
+<!-- <div id="search">
+  <input id="typeahead" class="typeahead" type="text" placeholder="Find a gift">
+</div> -->
