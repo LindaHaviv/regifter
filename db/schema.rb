@@ -72,6 +72,11 @@ ActiveRecord::Schema.define(version: 20160131134848) do
 
   add_index "gifts", ["user_id"], name: "index_gifts_on_user_id", using: :btree
 
+  create_table "searches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text     "body"
     t.integer  "conversation_id"

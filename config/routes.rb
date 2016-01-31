@@ -15,9 +15,12 @@ Rails.application.routes.draw do
   get "signin", to: "sessions#new"
   post "signin", to: "sessions#create"
   resources :users, :gifts, :categories
+  resources :search
+  get "/search/autocomplete/:query", to: "search#autocomplete"
+
   resources :gift_swaps
 
   resources :conversations do
     resources :messages
-   end
+  end
 end
