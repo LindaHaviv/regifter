@@ -1,3 +1,15 @@
+<% if flash[:error] %>
+  <%= flash[:error] %>
+<% end %>
 
-   <%= link_to "Sign In", signin_path %>
-   <%= link_to "Sign Up", signup_path %>
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+
+<% if logged_in? %>
+  You are logged in, <%= current_user.name %>
+   <%= link_to "Sign out", signout_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign In", signin_path %>
+  <%= link_to "Sign Up", signup_path %>
+<%end%>

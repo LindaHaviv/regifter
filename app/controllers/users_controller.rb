@@ -1,28 +1,26 @@
 class UsersController < ApplicationController
 
-  def index
-  end
 
   def new
     @user = User.new
   end
 
   def create
-    @user = User.create(user_params)
+    @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to @user
+      redirect_to root_path,:notice => "Thank you for signing up to Regifter, #{@user.username}!"
     else
-      redirect_to signin_path
+      redirect_to signup_path
     end
   end
 
   def edit
-    @user = User.find(params[:id])
+    set_user
   end
 
   def update
-    @user = User.find(params[:id])
+    set_user
     @user.update(user_params)
     redirect_to @user
   end
@@ -31,8 +29,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def delete
-  end
 
   def destroy
     set_user
