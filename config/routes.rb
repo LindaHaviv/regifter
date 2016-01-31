@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'gift_swaps/index'
+
+  get 'gift_swaps/new'
+
+  get 'gift_swaps/create'
+
   root "gifts#index"
-
-
 
   delete 'signout', to: "sessions#destroy"
 
@@ -12,6 +16,7 @@ Rails.application.routes.draw do
   post "signin", to: "sessions#create"
   resources :carrierwave_images
   resources :users, :gifts, :categories
+  resources :gift_swaps
 
   resources :conversations do
     resources :messages
