@@ -1,4 +1,5 @@
 class GiftsController < ApplicationController
+  self.skip_before_action(:authenticate, {except: [:new, :create]})
   def index
 
   end
@@ -24,6 +25,7 @@ class GiftsController < ApplicationController
   end
 
   def show
+
     @gift = Gift.find(params[:id])
   end
 

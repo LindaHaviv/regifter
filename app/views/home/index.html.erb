@@ -2,4 +2,7 @@
 
 
 <h1>*****REGIFTER*****</h1>
-
+<%= link_to "View all the shitty gifts", gifts_path %><br>
+<% if logged_in? %>
+<%= link_to "Share your garbage with the world!!", new_gift_path %>
+<%end%>
