@@ -11,6 +11,7 @@
 <% if logged_in? %>
   You are logged in, <%= current_user.name %>
    <%= link_to "Sign out", signout_path, method: :delete %>
+   <%= link_to 'Talk to someone!!!', conversations_path %>
 <% else %>
   <%= link_to "Sign In", signin_path %>
   <%= link_to "Sign Up", signup_path %>

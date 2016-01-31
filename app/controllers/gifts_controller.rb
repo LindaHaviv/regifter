@@ -1,5 +1,5 @@
 class GiftsController < ApplicationController
-  self.skip_before_action(:authenticate, {except: [:new, :create]})
+  self.skip_before_action(:authenticate!, {except: [:new, :create]})
   def index
 
   end

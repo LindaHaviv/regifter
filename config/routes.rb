@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   resources :carrierwave_images
   resources :users, :gifts, :categories
 
+  resources :conversations do
+    resources :messages
+   end
 end
