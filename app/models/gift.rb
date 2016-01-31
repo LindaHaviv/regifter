@@ -4,4 +4,6 @@ class Gift < ActiveRecord::Base
   has_many :categories, through: :gift_categories
 
   accepts_nested_attributes_for :categories
+
+  mount_uploader :image, AssetUploader 
 end
