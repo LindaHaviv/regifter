@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20160131134848) do
     t.string   "asset"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "image"
   end
 
   create_table "categories", force: :cascade do |t|
