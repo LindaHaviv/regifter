@@ -16,7 +16,7 @@ class AssetUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  version :medium do 
+  version :medium do
     process :resize_to_fit => [300, 300]
   end
 
