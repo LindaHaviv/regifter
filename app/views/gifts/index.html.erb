@@ -14,8 +14,11 @@
   <%= link_to 'Destroy', gift, method: :delete, data: { confirm: 'Are you sure?' } %><br>
   <%end%>
 
-  <%= image_tag gift.image, size:"200x200", class:"style_image"  %>
-
+<%if gift[:image].include?("assets")%>
+  <%= image_tag gift[:image], size:"200x200", class:"style_image" %>
+<%else%>
+  <%= image_tag gift.image, size:"200x200", class:"style_image" %>
+  <%end%>
     <% gift.categories.each do |category| %>
     <%=category.title%>
     <%end%>
