@@ -7,13 +7,20 @@ class GiftsController < ApplicationController
   def new
     @gift = Gift.new
     @gift.categories.build
+    @errors = @gift.errors
   end
 
   def create
     @user = current_user
-    @gift = Gift.create(gift_params)
-    current_user.gifts<<@gift
-    redirect_to @user
+    @gift = Gift.new(gift_params)
+    binding.pry
+    if @gift.save
+      current_user.gifts<<@gift
+      redirect_to @user,:notice => "Item added!"
+    else
+      @errors = @gift.errors
+      render "new"
+    end
   end
 
   def edit
