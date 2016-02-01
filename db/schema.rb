@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160131134848) do
+ActiveRecord::Schema.define(version: 20160201232226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20160131134848) do
     t.string   "asset"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "image"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -83,6 +82,13 @@ ActiveRecord::Schema.define(version: 20160131134848) do
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+
+  create_table "requests", force: :cascade do |t|
+    t.integer  "wanted_id"
+    t.integer  "unwanted_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "searches", force: :cascade do |t|
     t.datetime "created_at", null: false
