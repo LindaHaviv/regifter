@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @errors = @user.errors
   end
 
   def create
@@ -11,7 +12,6 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user,:notice => "Thank you for signing up to Regifter, #{@user.username}!"
     else
-      binding.pry
       @errors = @user.errors
       render "new"
     end

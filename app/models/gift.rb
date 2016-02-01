@@ -3,6 +3,8 @@ class Gift < ActiveRecord::Base
   has_many :gift_categories, dependent: :destroy
   has_many :categories, through: :gift_categories
   accepts_nested_attributes_for :categories
-  # searchkick autocomplete: ['title', 'brand']
+  validates_presence_of :title, :value, :description, :brand, :image
+
+  searchkick autocomplete: ['title', 'brand']
   mount_uploader :image, AssetUploader
 end
