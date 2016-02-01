@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GiftSwapTest < ActiveSupport::TestCase
+class RequestsControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end
