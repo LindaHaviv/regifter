@@ -1,12 +1,27 @@
+<h4> Hey,<%= @user.name %>. <h4><br>
 <div>
-  <h1><%= @user.name %></h1>
-  <h3><%= @user.username %></h3>
-  <p>Email: <%= @user.email %></p>
-  <p>Address: <%= @user.address %></p>
+  <p>Email: <%= @user.email %></p><br>
+  <p>Address: <%= @user.address %></p><br>
+
   <div id="footershow">
-  <%= link_to 'Edit User', edit_user_path %>
-  <%= link_to 'Delete Profile', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <%= link_to 'View some shitty gifts', gifts_path %>
-  <%= link_to 'Talk to someone!!!', conversations_path %>
-</div>
+      <%= link_to 'Edit User', edit_user_path %>
+      <%= link_to 'Delete Profile', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'View some shitty gifts', gifts_path %>
+      <%= link_to 'Talk to someone!!!', conversations_path %>
+  </div>
+
+<h4>These are your shitty gifts:<h4>
+  <h3><% @user.gifts.each do |gift| %>
+    <div id = "gift">
+    <%= gift.title %><br>
+    <% if logged_in? %>
+    <%= link_to 'Edit', edit_gift_path(gift) %>
+    <%= link_to 'Destroy', gift, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+    <%end%>
+    <%= image_tag gift.image, size: "200x200", class: "style_image" %><br>
+
+  </div>
+  <%end%>
+
+
 </div>
