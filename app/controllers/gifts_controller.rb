@@ -10,8 +10,10 @@ class GiftsController < ApplicationController
   end
 
   def create
+    @user = current_user
     @gift = Gift.create(gift_params)
-    redirect_to @gift
+    current_user.gifts<<@gift
+    redirect_to @user
   end
 
   def edit
@@ -33,7 +35,7 @@ class GiftsController < ApplicationController
     @gift.destroy
 
     respond_to do |format|
-      format.html { redirect_to gifts_url, notice: 'Gift was successfully destroyed.' }
+      format.html { redirect_to user_path(current_user), notice: 'Gift was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
