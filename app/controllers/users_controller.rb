@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @errors = @user.errors
   end
 
   def create
@@ -13,6 +14,8 @@ class UsersController < ApplicationController
       redirect_to @user,:notice => "Thank you for signing up to Regifter, #{@user.username}!"
     else
       redirect_to signup_path
+      @errors = @user.errors
+      render "new"
     end
   end
 
