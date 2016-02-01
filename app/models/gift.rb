@@ -6,4 +6,5 @@ class Gift < ActiveRecord::Base
   validates_presence_of :title, :value, :description, :brand, :image
   searchkick autocomplete: ['title', 'brand']
   mount_uploader :image, AssetUploader
+
 end

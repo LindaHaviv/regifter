@@ -3,26 +3,41 @@
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>
+    <% if @errors.full_messages_for(:title) %>
+    <p><%= @errors.full_messages_for(:title)[0] %></p>
+    <% end %>
   </div>
   <br>
   <div class="field">
     <%= f.label :value %>
     <%= f.number_field :value %>
+    <% if @errors.full_messages_for(:value) %>
+    <p><%= @errors.full_messages_for(:value)[0] %></p>
+    <% end %>
   </div>
   <br>
   <div class="field">
     <%= f.label :description %>
     <%= f.text_field :description %>
+    <% if @errors.full_messages_for(:description) %>
+    <p><%= @errors.full_messages_for(:description)[0] %></p>
+    <% end %>
   </div>
   <br>
   <div class="field">
     <%= f.label :brand %>
     <%= f.text_field :brand %>
+    <% if @errors.full_messages_for(:brand) %>
+    <p><%= @errors.full_messages_for(:brand)[0] %></p>
+    <% end %>
   </div>
   <br>
   <div class="form-group">
     <%= f.label :Image %>
     <%= f.file_field :image %>
+    <% if @errors.full_messages_for(:image) %>
+      <p><%= @errors.full_messages_for(:image)[0] %></p>
+    <% end %>
   </div>
   <br>
 
