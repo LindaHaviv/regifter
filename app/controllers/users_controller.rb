@@ -9,10 +9,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      binding.pry
       redirect_to @user,:notice => "Thank you for signing up to Regifter, #{@user.username}!"
     else
-      redirect_to signup_path
+      binding.pry
+      @errors = @user.errors
+      render "new"
     end
   end
 
