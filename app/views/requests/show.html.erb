@@ -1,10 +1,17 @@
 
-linda.haviv [9:53 AM]
-<h1>Request MADE......
-WHAT NOOOOWWW
-<%=@request%><br>
-wanted_id <%=@request.wanted_id%><br>
-unwanted_id <%=@request.unwanted_id%><br>
-wanted_gift <%=@request.wanted_gift.title%><br>
-unwanted gift <%=@request.unwanted_gift.title%><br>
-</h1>
+<!-- should show 2 items
+say swap confirmed!
+
+
+notification on user showpage
+make propose swap visible only if logged in -->
+<h1 style="color:green;">SWAP PROPOSED!!!!!!!</h1>
+
+<div id="gift">
+   <h2>GIVE ME THIS <%=@request.wanted_gift.title%> <br></h2>
+    <%= image_tag @request.wanted_gift.image, size:"410x400", class:"style_image"  %>
+  </div>
+<div id="gift">
+   <h2>FOR MY <%=@request.unwanted_gift.title%><br></h2>
+  <%= image_tag @request.unwanted_gift.image, size:"410x400", class:"style_image" %>
+</div>
