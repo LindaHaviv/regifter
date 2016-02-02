@@ -53,6 +53,6 @@ group :development do
   gem "carrierwave", "~> 0.10.0"
   gem "mini_magick", "~> 3.7.0"
 
-
+  gem 'bootstrap_form'
 
 end
