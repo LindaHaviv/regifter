@@ -1,0 +1,22 @@
+
+
+<br>
+<br>
+<br>
+<br>
+<%Gift.all.each do |gift|%>
+<div id= "gift" >
+  <%= link_to  gift.title, gift_path(gift) %><br>
+  How much? $<%= gift.value %><br>
+  Categories:
+  <% gift.categories.each do |category| %>
+  <%=category.title%>
+  <br>
+  <%end%>
+
+
+  <%= image_tag gift.image, size:"200x200", class:"style_image"  %><br>
+
+</div>
+
+<%end%>

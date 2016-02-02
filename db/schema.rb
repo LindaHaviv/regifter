@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160131134848) do
+ActiveRecord::Schema.define(version: 20160201202739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20160131134848) do
     t.string   "asset"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "image"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -89,6 +88,15 @@ ActiveRecord::Schema.define(version: 20160131134848) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "swaps", force: :cascade do |t|
+    t.integer  "gift_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "offered_gift_id"
+  end
+
+  add_index "swaps", ["gift_id"], name: "index_swaps_on_gift_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -102,4 +110,5 @@ ActiveRecord::Schema.define(version: 20160131134848) do
   add_foreign_key "gift_categories", "categories"
   add_foreign_key "gift_categories", "gifts"
   add_foreign_key "gifts", "users"
+  add_foreign_key "swaps", "gifts"
 end

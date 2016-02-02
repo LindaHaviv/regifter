@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wanted_gift_id: MyString
+  offered_gift_id: MyString
+  gift_id: 
+
+two:
+  wanted_gift_id: MyString
+  offered_gift_id: MyString
+  gift_id: 

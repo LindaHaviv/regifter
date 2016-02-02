@@ -1,0 +1,14 @@
+<div>
+  <h1><%= @gift.title %></h1>
+  <p>Description: <%= @gift.description %></p>
+  <p>Value: <%= @gift.value %></p>
+  <p>Brand: <%= @gift.brand %></p>
+  <p>Categories: <% @gift.categories.each do |category| %>
+    <%=category.title%>
+  <%end%>
+  </p>
+  <img src= "<%= @gift.image%>"
+
+</div><br>
+
+<td><%= link_to 'all gifts', gifts_path %></td>

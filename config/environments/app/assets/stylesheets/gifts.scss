@@ -1,0 +1,33 @@
+// Place all the styles related to the Gifts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#gift{
+  display: inline-block;
+  float: left;
+}
+
+.style_image {
+  border: 1px solid green;
+  margin-right: 30px;
+  margin-bottom: 70px;
+  border-image: 30px;
+}
+
+#nav{
+  display: inline;
+}
+
+#nav a {
+  padding: 10px 50px 10px;
+  color: #00BFFF;
+  text-decoration: none;
+  text-shadow: 0 1px 0 white;
+}
+
+#footershow a {
+  padding: 10px 50px 10px;
+  color: #778899;
+  text-decoration: none;
+  text-shadow: 0 1px 0 white;
+}

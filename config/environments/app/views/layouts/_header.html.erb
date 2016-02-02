@@ -1,0 +1,30 @@
+<% if flash[:error] %>
+    <%= flash[:error] %>
+<% end %>
+
+<% if flash[:notice] %>
+    <%= flash[:notice] %>
+<% end %>
+
+
+<div id="nav">
+  <%= link_to "HOME", root_path %>
+  <% if logged_in? %>
+      You are logged in, <%= current_user.name %>
+      <%= link_to "Sign Out", signout_path, method: :delete %>
+      <%= link_to "Messages", conversations_path %>
+      <%= link_to "Add a Gift", new_gift_path %>
+      <%= link_to "Profile", user_path(current_user) %>
+  <% else %>
+      <%= link_to "Sign In", signin_path %>
+      <%= link_to "Sign Up", signup_path %>
+  <%end%>
+</div><br><br><br>
+
+<div>
+<%= form_tag("/search", method: "get") do %>
+    <%= label_tag(:query, "Search for regifts:") %>
+    <%= text_field_tag :query, params[:query], placeholder: "I want to find..."%>
+    <%= submit_tag("Search") %>
+<% end %>
+</div><br>

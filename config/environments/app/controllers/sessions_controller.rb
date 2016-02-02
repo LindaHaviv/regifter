@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
 
   def create
   user = User.authenticate!(params[:session][:username], params[:session][:password])
+
     if user
       session[:user_id] = user.id
       redirect_to user_path(user), notice: "Welcome back, #{user.username}!"
