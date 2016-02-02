@@ -52,7 +52,7 @@ class GiftsController < ApplicationController
   end
 
   def gift_params
-    params.require(:gift).permit(:title, :value, :description, :brand, :image, :user_id, :categories_attributes=>[:title], :category_ids=>[])
+    params.require(:gift).permit(:title, :value, :description, :brand, :image, :user_id, :categories_attributes=>[:title], :category_ids=>[],:request_ids=>[])
   end
 
 end

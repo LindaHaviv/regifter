@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   post "signin", to: "sessions#create"
   resources :users, :categories, :search, :gifts, :requests
 
+  resources :gifts do
+    resources :requests
+  end
   # get "/search/autocomplete/:query", to: "search#autocomplete"
 
 
