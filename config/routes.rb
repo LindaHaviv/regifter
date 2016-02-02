@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
 
+
   root "home#index"
+
+
+
+
 
   delete 'signout', to: "sessions#destroy"
 

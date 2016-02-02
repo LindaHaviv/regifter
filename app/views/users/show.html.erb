@@ -8,8 +8,8 @@
       <%= link_to 'Delete Profile', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
 
-<h4>These are your shitty gifts:<h4>
-  <h3><% @user.gifts.each do |gift| %>
+<h4>These are your shitty gifts:</h4>
+  <% @user.gifts.each do |gift| %>
     <div id = "gift">
     <%= gift.title.capitalize %><br>
     <% if logged_in? %>
@@ -17,6 +17,19 @@
     <%= link_to 'Destroy', gift, method: :delete, data: { confirm: 'Are you sure?' } %></h4><br>
     <%end%>
     <%= image_tag gift.image, size: "200x200", class: "style_image" %><br>
+
+
+
+<%@swaps={}%>
+
+<%gift.requests_wanted.map do |x| %>
+    <%@swaps[x.unwanted_gift.user.name]= x.unwanted_gift.title %>
+    <%end%>
+    PENDING SWAPS:<br>
+<%@swaps.each do |person, gift|%>
+<h4>proposed by: <%=person%><br></h4>
+<h4>trade: <%=gift%></h4><br><br><br>
+<%end%>
 
   </div>
   <%end%>
