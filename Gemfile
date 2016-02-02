@@ -33,6 +33,7 @@ gem 'searchkick'
 
 gem "carrierwave", "~> 0.10.0"
 gem "mini_magick", "~> 3.7.0"
+gem 'rails_12factor'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
