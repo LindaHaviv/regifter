@@ -24,6 +24,8 @@ class GiftsController < ApplicationController
 
   def edit
     set_gift
+    @errors = @gift.errors
+    binding.pry
   end
 
   def update
