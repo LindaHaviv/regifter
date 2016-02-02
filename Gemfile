@@ -31,6 +31,8 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 
 gem 'searchkick'
 
+gem "carrierwave", "~> 0.10.0"
+gem "mini_magick", "~> 3.7.0"
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -47,12 +49,5 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
-
-  #upload images and more
-  gem "carrierwave", "~> 0.10.0"
-  gem "mini_magick", "~> 3.7.0"
-
-
 
 end
