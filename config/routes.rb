@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'gift_swaps/index'
 
-  get 'gift_swaps/new'
-
-  get 'gift_swaps/create'
 
   root "gifts#index"
 
