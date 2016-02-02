@@ -8,11 +8,16 @@
   <p>Categories: <% @gift.categories.each do |category| %>
     <%=category.title%>
   <%end%>
-  <p>Contact <%=@gift.user.username%> for more information</p>
-  <%= link_to 'Get this garbage today!', new_gift_request_path(@gift) %>
+  <!-- if logged in, show these buttons -->
+  <% if logged_in? %>
+    <p>Contact <%=@gift.user.username%> for more information</p>
+    <%= link_to 'Get this garbage today!', new_gift_request_path(@gift) %>
 
-  <%= link_to "Message Seller Here", conversations_path %>
-  </p>
+    <%= link_to "Message Seller Here", conversations_path %>
+    </p>
+  <% else %>
+    <p style="color:red;"> Sign in or sign up in order to propose a swap or message a user! </p>
+  <% end %>
    <%= image_tag @gift.image, size:"200x200", class:"style_image"  %>
 
 </div><br>
