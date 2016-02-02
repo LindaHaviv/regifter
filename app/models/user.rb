@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 10 }
   validates_presence_of  :name, :email, :username
 
-  def self.authenticate!(email, password)
-      user = self.find_by(email: email)
-      user.authenticate(password) if user
-    end
+  def self.authenticate!(username, password)
+        user = self.find_by(username: username)
+        user.authenticate(password) if user
+  end
 end
