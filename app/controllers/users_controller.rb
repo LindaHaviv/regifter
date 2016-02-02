@@ -19,6 +19,13 @@ class UsersController < ApplicationController
 
   def edit
     set_user
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to @user,:notice => "Thank you for updating your profile, #{@user.username}!"
+    else
+      @errors = @user.errors
+      render "edit"
+    end
   end
 
   def update
