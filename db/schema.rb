@@ -95,6 +95,15 @@ ActiveRecord::Schema.define(version: 20160201232226) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "swaps", force: :cascade do |t|
+    t.integer  "gift_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "offered_gift_id"
+  end
+
+  add_index "swaps", ["gift_id"], name: "index_swaps_on_gift_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -108,4 +117,5 @@ ActiveRecord::Schema.define(version: 20160201232226) do
   add_foreign_key "gift_categories", "categories"
   add_foreign_key "gift_categories", "gifts"
   add_foreign_key "gifts", "users"
+  add_foreign_key "swaps", "gifts"
 end

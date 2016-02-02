@@ -13,7 +13,6 @@ class GiftsController < ApplicationController
   def create
     @user = current_user
     @gift = Gift.new(gift_params)
-    binding.pry
     if @gift.save
       current_user.gifts<<@gift
       redirect_to @user,:notice => "Item added!"
