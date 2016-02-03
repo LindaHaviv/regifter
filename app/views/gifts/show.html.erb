@@ -9,12 +9,14 @@
     <%=category.title%>
   <%end%>
   <!-- if logged in, show these buttons -->
-  <% if logged_in? %>
+  <% if logged_in? && current_user[:id] != @gift.user[:id]%>
     <p>Contact <%=@gift.user.username%> for more information</p>
     <%= link_to 'Get this garbage today!', new_gift_request_path(@gift) %>
 
     <%= link_to "Message Seller Here", conversations_path %>
     </p>
+  <% elsif logged_in? %>
+    <p style="color:red;"> This item belongs to you </p>
   <% else %>
     <p style="color:red;"> Sign in or sign up in order to propose a swap or message a user! </p>
   <% end %>
