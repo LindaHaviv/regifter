@@ -1,8 +1,10 @@
 <div class="row">
+  <% if @gifts == [] %>
+    <p>Sorry, no gifts matched your search </p>
+  <% end %>
   <%@gifts.each do |gift| %>
   <div class="col-sm-6 col-md-4">
     <%= link_to(image_tag("#{gift.image}"), gift) %>
-
     <div class="thumbnail">
       <div class="caption">
         <h3><%=gift.title%></h3>

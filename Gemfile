@@ -22,19 +22,25 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+#security
 gem 'bcrypt','~> 3.1.7'
 
 gem 'select2-rails', '~> 4.0', '>= 4.0.1'
-
+#adds bootstrap
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+#search, using elastic search
+gem 'rails-simple-search', '~> 0.9.9'
 
-gem 'searchkick'
-
+#image uploading
 gem "carrierwave", "~> 0.10.0"
 gem "mini_magick", "~> 3.7.0"
+gem 'rmagick'
+
+#debugging
 gem 'rails_12factor'
 
+
+gem 'pg_search'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
