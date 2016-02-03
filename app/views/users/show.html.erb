@@ -11,11 +11,12 @@
   <%end%><br>
     <h4>These are your shitty gifts:</h4><br>
   <% @user.gifts.each do |gift| %>
-    <div id = "gift">
+    <div id=<%=gift.id%> class="gift">
+
       <%= gift.title.capitalize %><br>
     <% if logged_in? && params[:id].to_i == current_user.id%>
         <h4><%= link_to 'Edit', edit_gift_path(gift) %> |
-          <%= link_to 'Destroy', gift, method: :delete, data: { confirm: 'Are you sure?' } %></h4><br>
+          <%= link_to 'Destroy', gift, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></h4><br>
     <% elsif logged_in? && current_user[:id] != gift.user[:id]%>
       <p>Contact <%=gift.user.username%> for more information</p>
       <%= link_to 'Get this garbage today!', new_gift_request_path(gift) %>
