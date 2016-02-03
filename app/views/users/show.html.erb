@@ -14,10 +14,16 @@
     <div id=<%=gift.id%> class="gift">
 
       <%= gift.title.capitalize %><br>
-
     <% if logged_in? && params[:id].to_i == current_user.id%>
         <h4><%= link_to 'Edit', edit_gift_path(gift) %> |
           <%= link_to 'Destroy', gift, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></h4><br>
+    <% elsif logged_in? && current_user[:id] != gift.user[:id]%>
+      <p>Contact <%=gift.user.username%> for more information</p>
+      <%= link_to 'Get this garbage today!', new_gift_request_path(gift) %>
+      <%= link_to "Message Seller Here", conversations_path %>
+      </p>
+    <% else %>
+      <p style="color:red;"> Sign in or sign up in order to propose a swap or message a user! </p>
     <%end%>
     <%= image_tag gift.image, size: "200x200", class: "style_image" %><br>
 
@@ -29,9 +35,8 @@
       <%@user_id= x.unwanted_gift.user.id%>
     <%end%>
 <% if logged_in? && params[:id].to_i == current_user.id%>
-    PENDING SWAPS:<br>
     <%@swaps.each do |person, gift|%>
-      <h4>proposed by: <%=person%><br></h4>
+      <h4>Swap pending. Proposed by: <%=person%><br></h4>
       <%= link_to "See all of user's gifts", user_path(@user_id)%>
       <h4>trade: <%=gift%></h4><br><br><br>
     <%end%>
