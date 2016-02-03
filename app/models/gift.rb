@@ -6,6 +6,7 @@ class Gift < ActiveRecord::Base
   has_many :gift_categories, dependent: :destroy
   has_many :categories, through: :gift_categories, dependent: :destroy
   accepts_nested_attributes_for :categories
+  accepts_nested_attributes_for :requests
   validates_presence_of :title, :value, :description, :brand, :image
   mount_uploader :image, AssetUploader
   include PgSearch

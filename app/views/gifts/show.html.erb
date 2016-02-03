@@ -8,12 +8,22 @@
   <p>Categories: <% @gift.categories.each do |category| %>
     <%=category.title%>
   <%end%>
+
+
   <!-- if logged in, show these buttons -->
   <% if logged_in? && current_user[:id] != @gift.user[:id]%>
     <p>Contact <%=@gift.user.username%> for more information</p>
-    <%= link_to 'Get this garbage today!', new_gift_request_path(@gift) %>
+    <% if @accept %>
+    <%= form_tag("/requests") do |f| %>
+            <%=hidden_field_tag :unwanted_id, @wanted_id%>
+            <%=hidden_field_tag :wanted_id, (@gift.id.to_s)%>
+            <%=submit_tag 'ACCEPT trade'%>
+    <%end%>
 
-    <%= link_to "Message Seller Here", conversations_path %>
+    <%else%>
+      <%= link_to 'Get this garbage today!', new_gift_request_path(@gift) %>
+      <%= link_to "Message Seller Here", conversations_path %>
+    <%end%>
     </p>
   <% elsif logged_in? %>
     <p style="color:red;"> This item belongs to you </p>
