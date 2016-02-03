@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
-
-
-
   root "home#index"
-
-
-
-
 
   delete 'signout', to: "sessions#destroy"
 
@@ -20,7 +13,6 @@ Rails.application.routes.draw do
     resources :requests
   end
   # get "/search/autocomplete/:query", to: "search#autocomplete"
-
 
   resources :conversations do
     resources :messages
