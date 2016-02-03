@@ -45,6 +45,19 @@ ActiveRecord::Schema.define(version: 20160203151543) do
   add_index "gift_categories", ["category_id"], name: "index_gift_categories_on_category_id", using: :btree
   add_index "gift_categories", ["gift_id"], name: "index_gift_categories_on_gift_id", using: :btree
 
+  create_table "gift_swaps", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.integer  "proposed_gift_id"
+    t.integer  "asked_gift_id"
+    t.boolean  "accepted",         default: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "gift_swaps", ["receiver_id"], name: "index_gift_swaps_on_receiver_id", using: :btree
+  add_index "gift_swaps", ["sender_id"], name: "index_gift_swaps_on_sender_id", using: :btree
+
   create_table "gifts", force: :cascade do |t|
     t.string   "title"
     t.integer  "value"
@@ -92,6 +105,15 @@ ActiveRecord::Schema.define(version: 20160203151543) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "swaps", force: :cascade do |t|
+    t.integer  "gift_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "offered_gift_id"
+  end
+
+  add_index "swaps", ["gift_id"], name: "index_swaps_on_gift_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -105,4 +127,5 @@ ActiveRecord::Schema.define(version: 20160203151543) do
   add_foreign_key "gift_categories", "categories"
   add_foreign_key "gift_categories", "gifts"
   add_foreign_key "gifts", "users"
+  add_foreign_key "swaps", "gifts"
 end

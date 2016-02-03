@@ -28,16 +28,24 @@
     <%= image_tag gift.image, size: "200x200", class: "style_image" %><br>
 
   <%@swaps={}%>
-  <%@user_id = nil%>
+
+  <%@unwanted_gift = nil%>
+  <%@wanted_gift = nil%>
 
     <%gift.requests_wanted.map do |x| %>
       <%@swaps[x.unwanted_gift.user.username]= x.unwanted_gift.title %>
-      <%@user_id= x.unwanted_gift.user.id%>
+      <%@unwanted_gift= x.unwanted_gift%>
+      <%@wanted_gift = x.wanted_gift%>
     <%end%>
 <% if logged_in? && params[:id].to_i == current_user.id%>
     <%@swaps.each do |person, gift|%>
       <h4>Swap pending. Proposed by: <%=person%><br></h4>
-      <%= link_to "See all of user's gifts", user_path(@user_id)%>
+      <%= form_tag(accept_path(@unwanted_gift)) do |f| %>
+        <%=hidden_field_tag :wanted_id, @wanted_gift.id%>
+        <%=submit_tag 'check out this trade NOW!'%>
+      <%end%>
+
+
       <h4>trade: <%=gift%></h4><br><br><br>
     <%end%>
 <%end%>
