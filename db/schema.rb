@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20160203151543) do
     t.string   "asset"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "image"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -45,18 +46,8 @@ ActiveRecord::Schema.define(version: 20160203151543) do
   add_index "gift_categories", ["category_id"], name: "index_gift_categories_on_category_id", using: :btree
   add_index "gift_categories", ["gift_id"], name: "index_gift_categories_on_gift_id", using: :btree
 
-  create_table "gift_swaps", force: :cascade do |t|
-    t.integer  "sender_id"
-    t.integer  "receiver_id"
-    t.integer  "proposed_gift_id"
-    t.integer  "asked_gift_id"
-    t.boolean  "accepted",         default: false
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-  end
+  
 
-  add_index "gift_swaps", ["receiver_id"], name: "index_gift_swaps_on_receiver_id", using: :btree
-  add_index "gift_swaps", ["sender_id"], name: "index_gift_swaps_on_sender_id", using: :btree
 
   create_table "gifts", force: :cascade do |t|
     t.string   "title"
