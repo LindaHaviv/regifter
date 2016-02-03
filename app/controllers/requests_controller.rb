@@ -13,8 +13,9 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
   end
 
+
   private
   def request_params
-    params.require(:request).permit(:wanted_id, :unwanted_id,params[:wanted_id], params[:unwanted_id])
+    params.require(:request).permit(:wanted_id, :unwanted_id)
   end
 end
