@@ -14,11 +14,12 @@
   <% if logged_in? && current_user[:id] != @gift.user[:id]%>
     <p>Contact <%=@gift.user.username%> for more information</p>
     <% if @accept %>
-    <%= form_tag("/requests") do |f| %>
-            <%=hidden_field_tag :unwanted_id, @wanted_id%>
-            <%=hidden_field_tag :wanted_id, (@gift.id.to_s)%>
-            <%=submit_tag 'ACCEPT trade'%>
-    <%end%>
+    <%= form_tag("/requests")%>
+        <%= fields_for :request do |requests_form| %>
+          <%= requests_form.hidden_field :unwanted_id, value:@wanted_id %>
+          <%= requests_form.hidden_field :wanted_id, value:(@gift.id) %>
+          <%=submit_tag 'ACCEPT trade'%>
+    <% end %>
 
     <%else%>
       <%= link_to 'Get this garbage today!', new_gift_request_path(@gift) %>

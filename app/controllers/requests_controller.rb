@@ -5,8 +5,7 @@ class RequestsController < ApplicationController
   end
 
   def create
-    binding.pry
-    @request = Request.create(params[:wanted_id], params[:unwanted_id])
+    @request = Request.create(request_params)
     redirect_to @request
   end
 
