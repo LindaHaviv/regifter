@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160201232226) do
+ActiveRecord::Schema.define(version: 20160203023313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,16 @@ ActiveRecord::Schema.define(version: 20160201232226) do
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
+
   create_table "requests", force: :cascade do |t|
     t.integer  "wanted_id"
     t.integer  "unwanted_id"
@@ -94,15 +104,6 @@ ActiveRecord::Schema.define(version: 20160201232226) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "swaps", force: :cascade do |t|
-    t.integer  "gift_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "offered_gift_id"
-  end
-
-  add_index "swaps", ["gift_id"], name: "index_swaps_on_gift_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -117,5 +118,4 @@ ActiveRecord::Schema.define(version: 20160201232226) do
   add_foreign_key "gift_categories", "categories"
   add_foreign_key "gift_categories", "gifts"
   add_foreign_key "gifts", "users"
-  add_foreign_key "swaps", "gifts"
 end

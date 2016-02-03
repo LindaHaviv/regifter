@@ -2,9 +2,9 @@ class SearchController < ApplicationController
 
   def index
     if params[:query].present?
-      @gifts = Gift.search(params[:query], page: params[:page])
+      @gifts = Gift.search(params[:query])
     else
-      @gifts = Gift.all.page params[:page]
+      @gifts = Gift.all
     end
 
   end
