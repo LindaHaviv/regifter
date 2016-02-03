@@ -39,6 +39,7 @@ gem 'rmagick'
 #debugging
 gem 'rails_12factor'
 
+gem 'bootstrap_form'
 
 gem 'pg_search'
 # Use Unicorn as the app server
@@ -56,5 +57,6 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+
 
 end
