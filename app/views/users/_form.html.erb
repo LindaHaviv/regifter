@@ -29,7 +29,7 @@
     </div>
     <br>
     <div class="field">
-      <%= f.text_field :address %>
+      <%= f.text_area :address %>
       <% if @errors.full_messages_for(:address) != [] %>
         <% @errors.full_messages_for(:address).each do |msg| %>
         <p><%= msg %></p>
