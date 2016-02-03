@@ -39,11 +39,13 @@ class GiftsController < ApplicationController
 
   def destroy
     set_gift
+    @deleted_id = @gift.id
     @gift.destroy
 
     respond_to do |format|
       format.html { redirect_to user_path(current_user), notice: 'Gift was successfully destroyed.' }
       format.json { head :no_content }
+      format.js{}
     end
   end
 
