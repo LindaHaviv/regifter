@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <h3> These are your swapping options, <%=current_user.name%>. Good luck with that </h3>
 
 <%current_user.gifts.each do |gift|%>
@@ -18,23 +18,6 @@
     </div>
     </div>
   </div>
-=======
-<h3>
-  These are your swapping options,
-  <%=current_user.name%>. Good luck with that
-</h3>
-<div id="gift">
-  <%current_user.gifts.each do |gift|%>
-  <h3><%=gift.title %></h3>
-  <h4><%=gift.description %></h4>
-  <%= form_for(@request) do |f| %>
-  <%=f.hidden_field :unwanted_id, value:gift.id%>
-  <%=f.hidden_field :wanted_id, value:params[:gift_id]%>
-  <%=f.submit 'SWAP THIS SHIT NOW!'%>
-  <%end%>
-  <%= image_tag gift.image, size:"200x200", class:"style_image"  %>
 
-  <%end%>
->>>>>>> f84420c5b8c4bd45592fdc4c510b1ca7f92e9884
 </div>
 <%end%>
