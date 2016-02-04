@@ -1,56 +1,64 @@
-<h4>USER:<%= @user.name %>! <h4><br>
-<div>
-  <p>Email: <%= @user.email %></p><br>
-  <p>Address: <%= @user.address %></p><br>
+<h4>USER:<%= @user.name %>!
+  <h4><br>
+    <div>
+      <p>Email:
+        <%= @user.email %></p><br>
+      <p>Address:
+        <%= @user.address %></p><br>
 
-  <% if logged_in? && params[:id].to_i == current_user.id%>
-    <div id="footershow">
+      <% if logged_in? && params[:id].to_i == current_user.id%>
+      <div id="footershow">
         <%= link_to 'Edit User', edit_user_path %>
         <%= link_to 'Delete Profile', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
-  <%end%><br>
-    <h4>These are your shitty gifts:</h4><br>
-  <% @user.gifts.each do |gift| %>
-    <div id=<%=gift.id%> class="gift">
+      </div>
+      <%end%><br>
+      <h4>These are your shitty gifts:</h4><br>
+      <% @user.gifts.each do |gift| %>
+      <div id=<%=gift.id%> class="gift">
 
-      <%= gift.title.capitalize %><br>
-    <% if logged_in? && params[:id].to_i == current_user.id%>
-        <h4><%= link_to 'Edit', edit_gift_path(gift) %> |
+        <%= gift.title.capitalize %><br>
+        <% if logged_in? && params[:id].to_i == current_user.id%>
+        <h4><%= link_to 'Edit', edit_gift_path(gift) %>
+          |
           <%= link_to 'Destroy', gift, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></h4><br>
-    <% elsif logged_in? && current_user[:id] != gift.user[:id]%>
-      <p>Contact <%=gift.user.username%> for more information</p>
-      <%= link_to 'Get this garbage today!', new_gift_request_path(gift) %>
-      <%= link_to "Message Seller Here", conversations_path %>
+        <% elsif logged_in? && current_user[:id] != gift.user[:id]%>
+        <p>Contact
+          <%=gift.user.username%>
+          for more information</p>
+        <%= link_to 'Get this garbage today!', new_gift_request_path(gift) %>
+        <%= link_to "Message Seller Here", conversations_path %>
       </p>
     <% else %>
-      <p style="color:red;"> Sign in or sign up in order to propose a swap or message a user! </p>
-    <%end%>
-    <%= image_tag gift.image, size: "200x200", class: "style_image" %><br>
+      <p style="color:red;">
+        Sign in or sign up in order to propose a swap or message a user!
+      </p>
+      <%end%>
+      <%= image_tag gift.image, size: "200x200", class: "style_image" %><br>
 
-  <%@swaps={}%>
+      <%@swaps={}%>
 
-  <%@unwanted_gift = nil%>
-  <%@wanted_gift = nil%>
+      <%@unwanted_gift = nil%>
+      <%@wanted_gift = nil%>
 
-    <%gift.requests_wanted.map do |x| %>
+      <%gift.requests_wanted.map do |x| %>
       <%@swaps[x.unwanted_gift.user.username]= x.unwanted_gift.title %>
       <%@unwanted_gift= x.unwanted_gift%>
       <%@wanted_gift = x.wanted_gift%>
-    <%end%>
-<% if logged_in? && params[:id].to_i == current_user.id%>
-    <%@swaps.each do |person, gift|%>
-      <h4>Swap pending. Proposed by: <%=person%><br></h4>
+      <%end%>
+      <% if logged_in? && params[:id].to_i == current_user.id%>
+      <%@swaps.each do |person, gift|%>
+      <h4>Swap pending. Proposed by:
+        <%=person%><br></h4>
       <%= form_tag(accept_path(@unwanted_gift)) do |f| %>
-        <%=hidden_field_tag :wanted_id, @wanted_gift.id%>
-        <%=submit_tag 'check out this trade NOW!'%>
+      <%=hidden_field_tag :wanted_id, @wanted_gift.id%>
+      <%=submit_tag 'check out this trade NOW!'%>
       <%end%>
 
-
-      <h4>trade: <%=gift%></h4><br><br><br>
+      <h4>trade:
+        <%=gift%></h4><br><br><br>
+      <%end%>
+      <%end%>
+    </div>
     <%end%>
-<%end%>
-</div>
-  <%end%>
 
-
-</div>
+  </div>

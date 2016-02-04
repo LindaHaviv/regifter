@@ -13,11 +13,10 @@ class Gift < ActiveRecord::Base
   pg_search_scope :search, against: [:title, :description, :brand]
 
   def requests_wanted
-    Request.where(wanted_id: self.id)
+    Request.where(wanted_id: id)
   end
 
   def requests_made
-    Request.where(unwanted_id: self.id)
+    Request.where(unwanted_id: id)
   end
-
 end
