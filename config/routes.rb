@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "home#index"
+  root "gifts#index"
 
   delete 'signout', to: "sessions#destroy"
 
@@ -13,10 +13,8 @@ Rails.application.routes.draw do
     resources :requests
   end
 
-  post 'gifts/accept/:id', to: "gifts#accept", as: "accept"
-  # get "/search/autocomplete/:query", to: "search#autocomplete"
-
   resources :conversations do
     resources :messages
   end
+  post 'gifts/accept/:id', to: 'gifts#accept', as: 'accept'
 end

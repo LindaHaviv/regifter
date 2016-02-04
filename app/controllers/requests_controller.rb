@@ -25,6 +25,7 @@ class RequestsController < ApplicationController
 
 
   private
+
   def request_params
     params.require(:request).permit(:wanted_id, :unwanted_id)
   end

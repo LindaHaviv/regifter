@@ -1,7 +1,6 @@
 class GiftsController < ApplicationController
-  self.skip_before_action(:authenticate!, {except: [:new, :create]})
+  skip_before_action(:authenticate!, except: [:new, :create])
   def index
-
   end
 
   def new
@@ -20,7 +19,7 @@ class GiftsController < ApplicationController
       redirect_to @user,:notice => "Item added!"
     else
       @errors = @gift.errors
-      render "new"
+      render 'new'
     end
   end
 
@@ -37,16 +36,13 @@ class GiftsController < ApplicationController
 
   def show
     @gift = Gift.find(params[:id])
-
-
   end
 
   def accept
     @wanted_id = params[:wanted_id]
     @gift = Gift.find(params[:id])
     @accept = true
-    render "show"
-
+    render 'show'
   end
 
   def destroy
@@ -58,17 +54,17 @@ class GiftsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to user_path(current_user), notice: 'Gift was successfully destroyed.' }
       format.json { head :no_content }
-      format.js{}
+      format.js {}
     end
   end
 
   private
+
   def set_gift
     @gift = Gift.find(params[:id])
   end
 
   def gift_params
-    params.require(:gift).permit(:title, :value, :description, :brand, :image, :user_id, :categories_attributes=>[:title], :category_ids=>[],:request_ids=>[])
+    params.require(:gift).permit(:title, :value, :description, :brand, :image, :user_id, categories_attributes: [:title], category_ids: [], request_ids: [])
   end
-
 end

@@ -1,12 +1,10 @@
 class SearchController < ApplicationController
-
   def index
-    if params[:query].present?
-      @gifts = Gift.search(params[:query])
-    else
-      @gifts = Gift.all
+    @gifts = if params[:query].present?
+               Gift.search(params[:query])
+             else
+               Gift.all
     end
-
   end
 
   # def autocomplete
