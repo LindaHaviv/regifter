@@ -23,8 +23,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt','~> 3.1.7'
 
 gem 'select2-rails', '~> 4.0', '>= 4.0.1'
-#adds bootstrap
-gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+
 #search, using elastic search
 gem 'rails-simple-search', '~> 0.9.9'
 #image uploading
@@ -34,7 +33,6 @@ gem 'rmagick'
 #debugging
 gem 'rails_12factor'
 
-gem 'bootstrap_form'
 
 gem 'pg_search'
 # Use Unicorn as the app server
@@ -42,6 +40,11 @@ gem 'pg_search'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+#make it pretty
+gem 'bootstrap-sass', '~> 3.3.6'
+gem "font-awesome-rails"
+gem 'bootstrap_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -53,3 +56,6 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 end
+
+
+
