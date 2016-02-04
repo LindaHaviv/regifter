@@ -1,10 +1,13 @@
 <h1 style="color:green;">SWAP PROPOSED!!!!!!!</h1>
 
 <div id="gift">
-   <h2>GIVE ME THIS <%=@request.wanted_gift.title%> <br></h2>
-    <%= image_tag @request.wanted_gift.image, size:"410x400", class:"style_image"  %>
-  </div>
+  <h2>GIVE ME THIS
+    <%=@request.wanted_gift.title%>
+    <br></h2>
+  <%= image_tag @request.wanted_gift.image, size:"410x400", class:"style_image"  %>
+</div>
 <div id="gift">
-   <h2>FOR MY <%=@request.unwanted_gift.title%><br></h2>
+  <h2>FOR MY
+    <%=@request.unwanted_gift.title%><br></h2>
   <%= image_tag @request.unwanted_gift.image, size:"410x400", class:"style_image" %>
 </div>

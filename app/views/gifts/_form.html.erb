@@ -1,47 +1,47 @@
 <%= bootstrap_form_for(@gift) do |f| %>
 
-  <div class="field">
-    <%= f.text_field :title %>
-    <% if @errors.full_messages_for(:title) %>
-    <p><%= @errors.full_messages_for(:title)[0] %></p>
-    <% end %>
-  </div>
-  <div class="field">
-    <%= f.text_field :value, prepend: "$", append: ".00" %>
-    <% if @errors.full_messages_for(:value) %>
-    <p><%= @errors.full_messages_for(:value)[0] %></p>
-    <% end %>
-  </div>
-  <div class="field">
-    <%= f.text_field :description %>
-    <% if @errors.full_messages_for(:description) %>
-    <p><%= @errors.full_messages_for(:description)[0] %></p>
-    <% end %>
-  </div>
-  <div class="field">
-    <%= f.text_field :brand %>
-    <% if @errors.full_messages_for(:brand) %>
-    <p><%= @errors.full_messages_for(:brand)[0] %></p>
-    <% end %>
-  </div>
-  <div class="form-group">
-    <%= f.file_field :image %>
-    <% if @errors.full_messages_for(:image) %>
-      <p><%= @errors.full_messages_for(:image)[0] %></p>
-    <% end %>
-  </div>
+<div class="field">
+  <%= f.text_field :title %>
+  <% if @errors.full_messages_for(:title) %>
+  <p><%= @errors.full_messages_for(:title)[0] %></p>
+  <% end %>
+</div>
+<div class="field">
+  <%= f.text_field :value, prepend: "$", append: ".00" %>
+  <% if @errors.full_messages_for(:value) %>
+  <p><%= @errors.full_messages_for(:value)[0] %></p>
+  <% end %>
+</div>
+<div class="field">
+  <%= f.text_field :description %>
+  <% if @errors.full_messages_for(:description) %>
+  <p><%= @errors.full_messages_for(:description)[0] %></p>
+  <% end %>
+</div>
+<div class="field">
+  <%= f.text_field :brand %>
+  <% if @errors.full_messages_for(:brand) %>
+  <p><%= @errors.full_messages_for(:brand)[0] %></p>
+  <% end %>
+</div>
+<div class="form-group">
+  <%= f.file_field :image %>
+  <% if @errors.full_messages_for(:image) %>
+  <p><%= @errors.full_messages_for(:image)[0] %></p>
+  <% end %>
+</div>
 
-  <div class="field">
-    Pick a category for your gift!
-    <%= f.collection_select :id, Category.all, :id, :title %>
-  </div>
-  <div class="field">
-      New Category
-      <%= f.fields_for :categories do |categories_form| %>
-          <%= categories_form.text_field :title %>
-      <% end %>
-   </div>
- <div class="actions">
-   <%= f.submit "Save", class: "btn btn-primary" %>
- </div>
- <% end %>
+<div class="field">
+  Pick a category for your gift!
+  <%= f.collection_select :id, Category.all, :id, :title %>
+</div>
+<div class="field">
+  New Category
+  <%= f.fields_for :categories do |categories_form| %>
+  <%= categories_form.text_field :title %>
+  <% end %>
+</div>
+<div class="actions">
+  <%= f.submit "Save", class: "btn btn-primary" %>
+</div>
+<% end %>
