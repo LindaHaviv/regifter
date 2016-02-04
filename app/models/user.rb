@@ -11,4 +11,15 @@ class User < ActiveRecord::Base
         user = self.find_by(username: username)
         user.authenticate(password) if user
   end
+
+  def get_user_gifts
+    @user_gifts = Gift.where(user_id: self.id)
+    @gifts =  @user_gifts.select do |gift|
+      if Swap.find_by(item_id: gift.id) == nil
+        gift
+      end
+    end
+    @gifts
+  end
+
 end
