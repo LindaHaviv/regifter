@@ -11,10 +11,12 @@ class GiftsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @user = current_user
     @gift = Gift.new(gift_params)
     if @gift.save
-      current_user.gifts<<@gift
+      @user.gifts<<@gift
+      @gifts = @user.get_user_gifts
       redirect_to @user,:notice => "Item added!"
     else
       @errors = @gift.errors
@@ -50,6 +52,7 @@ class GiftsController < ApplicationController
   def destroy
     set_gift
     @deleted_id = @gift.id
+
     @gift.destroy
 
     respond_to do |format|

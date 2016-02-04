@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
-
-
-
   root "home#index"
-
-
-
-
 
   delete 'signout', to: "sessions#destroy"
 
@@ -14,7 +7,7 @@ Rails.application.routes.draw do
 
   get "signin", to: "sessions#new"
   post "signin", to: "sessions#create"
-  resources :users, :categories, :search, :gifts, :requests
+  resources :users, :categories, :search, :gifts, :requests, :swaps
 
   resources :gifts do
     resources :requests
@@ -22,7 +15,6 @@ Rails.application.routes.draw do
 
   post 'gifts/accept/:id', to: "gifts#accept", as: "accept"
   # get "/search/autocomplete/:query", to: "search#autocomplete"
-
 
   resources :conversations do
     resources :messages

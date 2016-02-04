@@ -1,7 +1,6 @@
 class Gift < ActiveRecord::Base
   belongs_to :user
-  has_many :requests
-  has_many :requests, foreign_key: :wanted_id
+  has_many :requests, foreign_key: :wanted_id, dependent: :destroy
   accepts_nested_attributes_for :requests
   has_many :gift_categories, dependent: :destroy
   has_many :categories, through: :gift_categories, dependent: :destroy

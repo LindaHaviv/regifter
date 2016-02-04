@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-
   def new
     @user = User.new
     @errors = @user.errors
@@ -34,11 +33,9 @@ class UsersController < ApplicationController
     redirect_to @user
   end
 
-
-
   def show
     @user = User.find(params[:id])
-
+    @gifts = @user.get_user_gifts
   end
 
 
