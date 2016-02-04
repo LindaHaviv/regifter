@@ -14,6 +14,7 @@
   <%end%><br>
 
 
+
   <% if @gifts == [] %>
     <h4>Looks like you have no gifts listed. <%= link_to "Add a Gift", "/gifts/new", class: "btn btn-default" %></h4><br>
     <% else %>
@@ -58,4 +59,14 @@
         <%end%>
       </div>
   <% end %>
+
+<%@user.gifts.each do |gift| %>
+  <%if !gift.items.empty? %>
+    <%item_one = gift.items.map {|x| x.item.title}.first%>
+    <%item_two = gift.items.map {|x| x.swapped_item.title}.first%>
+    <%user_one = gift.items.map {|x| x.old_owner.name}.first%>
+    <%user_two = gift.items.map {|x| x.new_owner.name}.first%>
+    You swapped with <%= user_one.capitalize%>  successfully!!. The trade is <%=item_one%> with  <%=item_two%>
+  <%end%>
+<%end%>
 </div>
