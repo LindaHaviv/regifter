@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "gifts#index"
+  root "home#index"
 
   delete 'signout', to: "sessions#destroy"
 
