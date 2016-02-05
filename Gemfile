@@ -31,6 +31,8 @@ gem 'rails-simple-search', '~> 0.9.9'
 gem "carrierwave", "~> 0.10.0"
 gem "mini_magick", "~> 3.7.0"
 gem 'rmagick'
+gem 'figaro'
+gem 'fog'
 #debugging
 gem 'rails_12factor'
 
@@ -57,6 +59,3 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 end
-
-
-
