@@ -8,12 +8,12 @@
 
        <title>Regifter</title>
 
-    
-   
+
+
     <%= csrf_meta_tags %>
 
    <link href="//fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet">
- 
+
    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
 
 
@@ -29,20 +29,15 @@
   </head>
   <body>
 
-<!--   <%= render "layouts/header" %>
-      <%= yield %>  -->
+  <!-- <%= render "layouts/header" %> -->
+      <%= yield %>
 
     <nav class="side-nav side-nav-left">
       <h2><a href="#">Rh+</a></h2>
       <ul class="list-unstyled">
-        <li><a href="#">Dresses</a></li>
-        <li><a href="#">Shirts & Tops</a></li>
-        <li><a href="#">Jeans</a></li>
-        <li><a href="#">Swimwear</a></li>
-        <li><a href="#">Coats & Jackets</a></li>
-        <li><a href="#">Sunglasses & Eyewear</a></li>
-        <li><a href="#">Accessories</a></li>
-        <li><a href="#">Jewelry</a></li>
+        <li><%= link_to "Add a Gift", new_gift_path %></li>
+        <li><%= link_to "All Gifts", 'gifts#index' %></li>
+        <li><a href="#">Contact</a></li>
       </ul>
     </nav>
     <div class="site-overlay"></div>
@@ -97,326 +92,7 @@
         </div>
       </header>
 
-      <!-- Slideshow -->
-      <div class="container-fluid nopadding">
-        <div class="row">
-          <div class="col-sm-12">
-            <div id="slideshow" class="owl-carousel" style="opacity: 1;">
-              <div><a href="#"><img src="assets/img/image_holder_1500x698.png" alt=""></a></div>
-              <div><a href="#"><img src="assets/img/image_holder_1500x698.png" alt=""></a></div>
-              <div><a href="#"><img src="assets/img/image_holder_1500x698.png" alt=""></a></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--/ Slideshow -->
-
-      <div class="container showcase">
-        <div class="row">
-          <div class="product-grid col-xs-6 col-sm-3">
-            <div class="product-thumb" data-sr>
-              <figure>
-                <div class="image">
-                  <a href="#"><img src="assets/img/image_holder_x263.png" alt="" title="" class="img-responsive"></a>
-                </div>
-                <figcaption>
-                  <div class="name">
-                    <a href="#">Oversized Shirt</a>
-                  </div>
-                  <div class="price">
-                    $122.00
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-          <div class="product-grid col-xs-6 col-sm-3">
-            <div class="product-thumb" data-sr>
-              <figure>
-                <div class="image">
-                  <a href="#"><img src="assets/img/image_holder_x263.png" alt="" title="" class="img-responsive"></a>
-                </div>
-                <figcaption>
-                  <div class="name">
-                    <a href="#">Oversized Shirt</a>
-                  </div>
-                  <div class="price">
-                    $122.00
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-          <div class="product-grid col-xs-6 col-sm-3">
-            <div class="product-thumb" data-sr>
-              <figure>
-                <div class="image">
-                  <a href="#"><img src="assets/img/image_holder_x263.png" alt="" title="" class="img-responsive"></a>
-                </div>
-                <figcaption>
-                  <div class="name">
-                    <a href="#">Oversized Shirt</a>
-                  </div>
-                  <div class="price">
-                    $122.00
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-          <div class="product-grid col-xs-6 col-sm-3">
-            <div class="product-thumb" data-sr>
-              <figure>
-                <div class="image">
-                  <a href="#"><img src="assets/img/image_holder_x263.png" alt="" title="" class="img-responsive">
-                </div>
-                <figcaption>
-                  <div class="name">
-                    <a href="#">Oversized Shirt</a>
-                  </div>
-                  <div class="price">
-                    $122.00
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12 col-sm-3">
-            <div class="row">
-              <div class="product-grid col-xs-6 col-sm-12">
-                <div class="product-thumb" data-sr>
-                  <figure>
-                    <div class="image">
-                      <a href="#"><img src="assets/img/image_holder_x263.png" alt="" title="" class="img-responsive"></a>
-                    </div>
-                    <figcaption>
-                      <div class="name">
-                        <a href="#">Oversized Shirt</a>
-                      </div>
-                      <div class="price">
-                        $122.00
-                      </div>
-                    </figcaption>
-                  </figure>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="product-grid col-xs-6 col-sm-12">
-                <div class="product-thumb" data-sr>
-                  <figure>
-                    <div class="image">
-                      <a href="#"><img src="assets/img/image_holder_x263.png" alt="" title="" class="img-responsive"></a>
-                    </div>
-                    <figcaption>
-                      <div class="name">
-                        <a href="#">Oversized Shirt</a>
-                      </div>
-                      <div class="price">
-                        $122.00
-                      </div>
-                    </figcaption>
-                  </figure>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="product-grid col-xs-12 col-sm-9">
-            <div class="product-thumb" data-sr>
-              <div class="image"><a href="#"><img src="assets/img/image_holder_848x559.png" alt="" class="img-responsive"></a></div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="product-grid col-xs-6 col-sm-3">
-            <div class="product-thumb" data-sr>
-              <figure>
-                <div class="image">
-                  <a href="#"><img src="assets/img/image_holder_x263.png" alt="" title="" class="img-responsive"></a>
-                </div>
-                <figcaption>
-                  <div class="name">
-                    <a href="#">Oversized Shirt</a>
-                  </div>
-                  <div class="price">
-                    $122.00
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-          <div class="product-grid col-xs-6 col-sm-3">
-            <div class="product-thumb" data-sr>
-              <figure>
-                <div class="image">
-                  <a href="#"><img src="assets/img/image_holder_x263.png" alt="" title="" class="img-responsive"></a>
-                </div>
-                <figcaption>
-                  <div class="name">
-                    <a href="#">Oversized Shirt</a>
-                  </div>
-                  <div class="price">
-                    $122.00
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-          <div class="product-grid col-xs-6 col-sm-3">
-            <div class="product-thumb" data-sr>
-              <figure>
-                <div class="image">
-                  <a href="#"><img src="assets/img/image_holder_x263.png" alt="" title="" class="img-responsive"></a>
-                </div>
-                <figcaption>
-                  <div class="name">
-                    <a href="#">Oversized Shirt</a>
-                  </div>
-                  <div class="price">
-                    $122.00
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-          <div class="product-grid col-xs-6 col-sm-3">
-            <div class="product-thumb" data-sr>
-              <figure>
-                <div class="image">
-                  <a href="#"><img src="assets/img/image_holder_x263.png" alt="" title="" class="img-responsive"></a>
-                </div>
-                <figcaption>
-                  <div class="name">
-                    <a href="#">Oversized Shirt</a>
-                  </div>
-                  <div class="price">
-                    $122.00
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="product-grid col-xs-12 col-sm-9">
-            <div class="product-thumb" data-sr>
-              <div class="image"><a href="#"><img src="assets/img/image_holder_848x559.png" alt="" class="img-responsive"></a></div>
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-3">
-            <div class="row">
-              <div class="product-grid col-xs-6 col-sm-12">
-                <div class="product-thumb" data-sr>
-                  <figure>
-                    <div class="image">
-                      <a href="#"><img src="assets/img/image_holder_x263.png" alt="" title="" class="img-responsive"></a>
-                    </div>
-                    <figcaption>
-                      <div class="name">
-                        <a href="#">Oversized Shirt</a>
-                      </div>
-                      <div class="price">
-                        $122.00
-                      </div>
-                    </figcaption>
-                  </figure>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="product-grid col-xs-6 col-sm-12">
-                <div class="product-thumb" data-sr>
-                  <figure>
-                    <div class="image">
-                      <a href="#"><img src="assets/img/image_holder_x263.png" alt="" title="" class="img-responsive"></a>
-                    </div>
-                    <figcaption>
-                      <div class="name">
-                        <a href="#">Oversized Shirt</a>
-                      </div>
-                      <div class="price">
-                        $122.00
-                      </div>
-                    </figcaption>
-                  </figure>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="product-grid col-xs-6 col-sm-3">
-            <div class="product-thumb" data-sr>
-              <figure>
-                <div class="image">
-                  <a href="#"><img src="assets/img/image_holder_x263.png" alt="" title="" class="img-responsive"></a>
-                </div>
-                <figcaption>
-                  <div class="name">
-                    <a href="#">Oversized Shirt</a>
-                  </div>
-                  <div class="price">
-                    $122.00
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-          <div class="product-grid col-xs-6 col-sm-3">
-            <div class="product-thumb" data-sr>
-              <figure>
-                <div class="image">
-                  <a href="#"><img src="assets/img/image_holder_x263.png" alt="" title="" class="img-responsive"></a>
-                </div>
-                <figcaption>
-                  <div class="name">
-                    <a href="#">Oversized Shirt</a>
-                  </div>
-                  <div class="price">
-                    $122.00
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-          <div class="product-grid col-xs-6 col-sm-3">
-            <div class="product-thumb" data-sr>
-              <figure>
-                <div class="image">
-                  <a href="#"><img src="assets/img/image_holder_x263.png" alt="" title="" class="img-responsive"></a>
-                </div>
-                <figcaption>
-                  <div class="name">
-                    <a href="#">Oversized Shirt</a>
-                  </div>
-                  <div class="price">
-                    $122.00
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-          <div class="product-grid col-xs-6 col-sm-3">
-            <div class="product-thumb" data-sr>
-              <figure>
-                <div class="image">
-                  <a href="#"><img src="assets/img/image_holder_x263.png" alt="" title="" class="img-responsive"></a>
-                </div>
-                <figcaption>
-                  <div class="name">
-                    <a href="#">Oversized Shirt</a>
-                  </div>
-                  <div class="price">
-                    $122.00
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-        </div>
-      </div>
+<!-- Where slideshow used to be -->
 
       <footer>
         <div class="container-fluid">
@@ -541,4 +217,3 @@
     </script>
   </body>
 </html>
-
