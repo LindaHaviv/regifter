@@ -14,11 +14,10 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
-//=require jquery.min
 //=require bootstrap.min
 //=require owl-carousel/owl.carousel.min
 //=require smoothscroll
 //=require scrollreveal.min
 //=require script
+//=require behavior
 //= require_tree .
-
