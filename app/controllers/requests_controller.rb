@@ -9,6 +9,7 @@ class RequestsController < ApplicationController
     if @inv_request != []
       Swap.implement(@request)
       destroy_pending_requests(@request.wanted_id, @request.unwanted_id)
+      # notify_swappers
       redirect_to user_path(current_user) and return
     end
     redirect_to @request
