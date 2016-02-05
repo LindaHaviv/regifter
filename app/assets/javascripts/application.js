@@ -20,5 +20,10 @@
 //=require smoothscroll
 //=require scrollreveal.min
 //=require script
+<<<<<<< HEAD
+//=require behavior
+
+=======
+>>>>>>> master
 //= require_tree .
 
