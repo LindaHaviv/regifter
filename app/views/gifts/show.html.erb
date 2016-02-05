@@ -8,7 +8,8 @@
             <li><%= link_to "Gifts", gifts_path %></li>
             <li><a href="#"><%=@gift.title%></a></li>
           </ul>
-          <br>
+          <br/>
+
           <%= image_tag @gift.image, class:"img-responsive"  %>
           <br/ >
           <% if logged_in? && current_user[:id] != @gift.user[:id]%>
@@ -24,6 +25,7 @@
           <%= link_to 'Propose Swap!', new_gift_request_path(@gift), class: "btn btn-primary btn-block" %>
           <%end%>
         </p>
+
         <% elsif logged_in? %>
         <p style="color:red;"> This item belongs to you </p>
         <% else %>
