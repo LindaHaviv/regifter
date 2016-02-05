@@ -9,7 +9,6 @@
             <li><a href="#"><%=@gift.title%></a></li>
           </ul>
           <br/>
-
           <%= image_tag @gift.image, class:"img-responsive"  %>
           <br/ >
           <% if logged_in? && current_user[:id] != @gift.user[:id]%>
@@ -25,13 +24,11 @@
           <%= link_to 'Propose Swap!', new_gift_request_path(@gift), class: "btn btn-primary btn-block" %>
           <%end%>
         </p>
-
         <% elsif logged_in? %>
         <p style="color:red;"> This item belongs to you </p>
         <% else %>
         <p style="color:red;"> Sign in or sign up in order to propose a swap or message a user! </p>
         <% end %>
-
         </div>
         <div class="col-sm-6">
           <h1><%=@gift.title%></h1>
@@ -47,8 +44,6 @@
               </tr>
             </table>
           </div>
-
-
           <hr>
           <!-- Description -->
           <div class="panel panel-default">
@@ -62,14 +57,9 @@
             </div>
           </div>
           <!--/ Description -->
-
-
-
           <br />
-
         </div>
       </div>
     </div>
   </div>
-
 </div>
