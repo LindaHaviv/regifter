@@ -67,6 +67,9 @@
     <%user_one = gift.items.map {|x| x.old_owner.name}.first%>
     <%user_two = gift.items.map {|x| x.new_owner.name}.first%>
     You swapped with <%= user_one.capitalize%>  successfully!!. The trade is <%=item_one%> with  <%=item_two%>
+    <%sender_id = params[:id]%>
+    <%recipient_id = User.find_by(name:user_one).id%>
+    <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=recipient_id%>&sender_id=<%=sender_id%>">Message <%=user_one%> to coordinate the exchange!!</a>
   <%end%>
 <%end%>
 </div>
