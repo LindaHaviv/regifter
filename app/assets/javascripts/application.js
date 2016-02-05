@@ -19,5 +19,5 @@
 //=require smoothscroll
 //=require scrollreveal.min
 //=require script
+//=require behavior
 //= require_tree .
-
