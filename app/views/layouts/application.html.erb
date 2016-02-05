@@ -17,8 +17,6 @@
    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
 
 
-  <link href="assets/js/owl-carousel/owl.carousel.css" rel="stylesheet">
-
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,24 +28,21 @@
   <body>
 
 
-    <%= render "layouts/header" %>
-
-
 
       <%= yield %>
 
     <nav class="side-nav side-nav-left">
-      <h2><a href="#">Rh+</a></h2>
+      <h2><a href="#">SW</a></h2>
       <ul class="list-unstyled">
         <li><%= link_to "Add a Gift", new_gift_path %></li>
-        <li><%= link_to "All Gifts", 'gifts#index' %></li>
+        <li><%= link_to "All Gifts", gifts_path %></li>
         <li><a href="#">Contact</a></li>
       </ul>
     </nav>
     <div class="site-overlay"></div>
     <div class="wrapper">
 
-      <!-- <header>
+      <header>
         <div class="container-fluid">
           <div class="row">
             <div class="col-sm-12">
@@ -94,9 +89,11 @@
             </div>
           </div>
         </div>
-      </header> -->
+      </header>
 
 <!-- Where slideshow used to be -->
+
+
 
       <footer>
         <div class="container-fluid">
