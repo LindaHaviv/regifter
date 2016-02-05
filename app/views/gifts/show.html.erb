@@ -1,38 +1,73 @@
 <div class="container">
-  <div class="col-md-4 panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"><%=@gift.title%></h3>
-  </div>
-  <div class="panel-body">
-      <p>Description: <%= @gift.description %></p>
-      <p>Value: <%= @gift.value %></p>
-      <p>Brand: <%= @gift.brand %></p>
-      <p>Categories: <% @gift.categories.each do |category| %> </p>
-      <%=category.title%>
-      <%end%>
-
-
-      <!-- if logged in, show these buttons -->
-      <% if logged_in? && current_user[:id] != @gift.user[:id]%>
-      <p>Contact <%=link_to @gift.user.username, conversations_path%> for more information</p>
-      <% if @accept %>
-      <%= form_tag("/requests")%>
-      <%= fields_for :request do |requests_form| %>
-      <%= requests_form.hidden_field :unwanted_id, value:@wanted_id %>
-      <%= requests_form.hidden_field :wanted_id, value:(@gift.id) %>
-      <%=submit_tag 'ACCEPT trade', class: "btn btn-primary"%>
-      <% end %>
-
-      <%else%>
-      <%= link_to 'Get this garbage today!', new_gift_request_path(@gift), class: "btn btn-primary" %>
-      <%end%>
-      </p>
-      <% elsif logged_in? %>
+  <div class="row product-page">
+    <div id="content" class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-6">
+          <ul class="breadcrumb">
+            <li><a href="#"><i class="icon ion-ios-home-outline"></i></a></li>
+            <li><%= link_to "Gifts", gifts_path %></li>
+            <li><a href="#"><%=@gift.title%></a></li>
+          </ul>
+          <br>
+          <%= image_tag @gift.image, class:"img-responsive"  %>
+          <br/ >
+          <% if logged_in? && current_user[:id] != @gift.user[:id]%>
+            <p>Contact <%=link_to @gift.user.username, conversations_path%> for more information</p>
+            <% if @accept %>
+              <%= form_tag("/requests")%>
+              <%= fields_for :request do |requests_form| %>
+              <%= requests_form.hidden_field :unwanted_id, value:@wanted_id %>
+              <%= requests_form.hidden_field :wanted_id, value:(@gift.id) %>
+              <%=submit_tag 'Accept Swap', class: "btn btn-primary btn-block"%>
+            <% end %>
+          <%else%>
+          <%= link_to 'Propose Swap!', new_gift_request_path(@gift), class: "btn btn-primary btn-block" %>
+          <%end%>
+        </p>
+        <% elsif logged_in? %>
         <p style="color:red;"> This item belongs to you </p>
-      <% else %>
+        <% else %>
         <p style="color:red;"> Sign in or sign up in order to propose a swap or message a user! </p>
-      <% end %>
-      <%= image_tag @gift.image, size:"200x200", class:"style_image"  %>
+        <% end %>
+
+        </div>
+        <div class="col-sm-6">
+          <h1><%=@gift.title%></h1>
+          <div class="table-responsive">
+            <table class="table">
+              <tr>
+                <td>Brand:</td>
+                <td> <%= @gift.brand %></td>
+              </tr>
+              <tr>
+                <td>Value:</td>
+                <td><%= @gift.value %></td>
+              </tr>
+            </table>
+          </div>
+
+
+          <hr>
+          <!-- Description -->
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title"><a href="#collapse-description" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Description <i class="fa fa-angle-down"></i></a></h4>
+            </div>
+            <div id="collapse-description" class="panel-collapse collapse">
+              <div class="panel-body">
+                <p><%=@gift.description%></p>
+              </div>
+            </div>
+          </div>
+          <!--/ Description -->
+
+
+
+          <br />
+
+        </div>
+      </div>
     </div>
   </div>
-  </div>
+
+</div>

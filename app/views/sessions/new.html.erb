@@ -1,3 +1,6 @@
+<div class="container">
+<div class="col-xs-12">
+
 <%= bootstrap_form_for(:session, url: signin_path) do |f| %>
 <div class="field">
   <%= f.text_field :username, icon: "user" %><br>
@@ -16,3 +19,5 @@
 </div>
 <% end %><br>
 <%=link_to 'Back to home', root_path%>
+</div>
+</div>
