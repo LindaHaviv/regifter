@@ -1,19 +1,23 @@
-<br>
-<br>
-<br>
-<br>
-<%Gift.get_all_gifts.each do |gift|%>
-<div id=<%=gift.id%> class="gift">
-  <%= link_to  gift.title, gift_path(gift) %><br>
-  How much? $<%= gift.value %><br>
-  Categories:
-  <% gift.categories.each do |category| %>
-  <%=category.title%>
-  <br>
-  <%end%>
-
-  <%= image_tag gift.image, size:"210x200", class:"style_image"  %><br>
-
+<div class="container">
+  <div class="row">
+    <%Gift.get_all_gifts.each do |gift|%>
+    <div id=<%=gift.id%> class="product-grid col-xs-6 col-sm-3">
+      <div class="product-thumb" data-sr>
+        <figure>
+          <div class="image">
+            <%= image_tag gift.image, class:"img-responsive"  %>
+          </div>
+          <figcaption>
+            <div class="name">
+              <%= link_to  gift.title, gift_path(gift) %>
+            </div>
+            <div class="price">
+              $<%= gift.value %>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+    <%end%>
+  </div>
 </div>
-
-<%end%>
