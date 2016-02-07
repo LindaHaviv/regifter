@@ -1,0 +1,5 @@
+<% if flash[:auth] %>
+<%= flash[:auth] %>
+<% end %>
+<br>
+<h3>Please <%= link_to "sign in", signin_path %> or <%= link_to "sign up", signup_path %>.</h3>

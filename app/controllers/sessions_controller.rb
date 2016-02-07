@@ -16,7 +16,6 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    binding.pry
     session[:user_id] = nil
     redirect_to root_path, notice: 'You have been logged out!'
   end
