@@ -1,5 +1,0 @@
-development:
-  AWS_ACCESS_KEY: "AKIAIVUT5YXNCRQP664Q"
-  AWS_SECRET_KEY: "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"
-  AWS_BUCKET: "regifter"
-  secret_key_base: 0f9716a4020baf4b2555fbe21c6d832db9a0e4d505747cbd6a6d76ce08121cb545ca496880e9de046ac4c804aaeb7b209668b4e14adc38b577c84822ed9efca1
