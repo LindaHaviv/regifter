@@ -28,9 +28,6 @@
   <body>
 
 
-
-      <%= yield %>
-
     <nav class="side-nav side-nav-left">
       <h2><a href="#">SW</a></h2>
       <ul class="list-unstyled">
@@ -53,8 +50,15 @@
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon ion-ios-person-outline" data-toggle="tooltip" data-placement="bottom" title="My Account"></i></a>
                     <ul class="dropdown-menu dropdown-menu-right text-center">
                       <li class="dropdown-triangle"></li>
-                      <li><a href="#">Register</a></li>
-                      <li><a href="#">Login</a></li>
+                        <% if logged_in? %>
+                          <li><%= link_to "Profile", user_path(current_user) %></li>
+                          <li><%= link_to "Add a Gift", new_gift_path %></li>
+                          <li><%= link_to "Messages", conversations_path %></li>
+                          <li><%= link_to "Sign Out", signout_path, method: :delete %></li>
+                        <% else %>
+                          <li><%= link_to "Sign In", signin_path %></li>
+                          <li><%= link_to "Sign Up", signup_path %></li>
+                           <%end%>
                     </ul>
                   </li>
                 </ul>
@@ -93,7 +97,7 @@
 
 <!-- Where slideshow used to be -->
 
-
+   <%= yield %>
 
       <footer>
         <div class="container-fluid">

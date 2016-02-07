@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "home#index"
 
-  delete 'signout', to: "sessions#destroy"
+  get 'signout', to: "sessions#destroy"
 
   get "signup", to: "users#new"
 
@@ -18,3 +18,6 @@ Rails.application.routes.draw do
   end
   post 'gifts/accept/:id', to: 'gifts#accept', as: 'accept'
 end
+
+
+
