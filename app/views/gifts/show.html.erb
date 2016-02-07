@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-sm-6">
           <ul class="breadcrumb">
-            <li><a href="#"><i class="icon ion-ios-home-outline"></i></a></li>
+            <li><a href="/"><i class="icon ion-ios-home-outline"></i></a></li>
             <li><%= link_to "Gifts", gifts_path %></li>
             <li><a href="#"><%=@gift.title%></a></li>
           </ul>
@@ -25,9 +25,9 @@
           <%end%>
         </p>
         <% elsif logged_in? %>
-        <p style="color:red;"> This item belongs to you </p>
+        <p class="accent"> This item belongs to you </p>
         <% else %>
-        <p style="color:red;"> Sign in or sign up in order to propose a swap or message a user! </p>
+        <p class="accent"> <%= link_to "Sign in", signup_path %> or <%= link_to "sign up", signin_path %> to propose a swap or message a user </p>
         <% end %>
         </div>
         <div class="col-sm-6">

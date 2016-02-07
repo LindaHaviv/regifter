@@ -1,6 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  # config.aws_secret_key = ENV["AWS_SECRET_KEY"]
+  # config.aws_bucket = ENV["AWS_BUCKET"]
   # Code is not reloaded between requests.
   config.cache_classes = true
 

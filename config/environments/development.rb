@@ -1,4 +1,7 @@
 Rails.application.configure do
+
+  # config.aws_secret_key = ENV["AWS_SECRET_KEY"]
+  # config.aws_bucket = ENV["AWS_BUCKET"]
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
