@@ -61,16 +61,20 @@
               </div>
               <div class="search pull-right">
                 <div class="btn-group">
-                  <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon ion-ios-search-strong" data-toggle="tooltip" data-placement="bottom" data-container="body" title="Search"></i></a>
+
+      <form action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+                  <a href="/search" data-toggle="dropdown" class="dropdown-toggle"><i class="icon ion-ios-search-strong" data-toggle="tooltip" data-placement="bottom" data-container="body" title="Search"></i></a>
                   <ul class="dropdown-menu pull-right">
                     <li class="dropdown-triangle"></li>
                     <li>
                       <div class="input-group">
-                        <input type="text" name="search" value="" class="form-control">
+                          <input type="text" name="query" id="query" placeholder="I want to find..." class="form-control">
                         <div class="input-group-btn">
-                          <button type="button" class="btn btn-default">Search</button>
+                          <input type="submit" name="commit" value="Search" class="btn btn-default">
                         </div>
                       </div>
+          </form>
+
                     </li>
                   </ul>
                 </div>
