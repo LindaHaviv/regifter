@@ -4,13 +4,17 @@ class GiftsController < ApplicationController
   end
 
   def new
-    @gift = Gift.new
-    @gift.categories.build
-    @errors = @gift.errors
+    if !logged_in?
+      flash[:auth] = "Sorry, you must be signed in to a gift."
+      redirect_to auth_path
+    else
+      @gift = Gift.new
+      @gift.categories.build
+      @errors = @gift.errors
+    end
   end
 
   def create
-    # binding.pry
     @user = current_user
     @gift = Gift.new(gift_params)
     if @gift.save
