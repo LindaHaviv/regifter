@@ -29,9 +29,10 @@ class GiftsController < ApplicationController
   end
 
   def update
+    @user = current_user
     set_gift
     @gift.update(gift_params)
-    redirect_to @gift
+    redirect_to @user
   end
 
   def show
