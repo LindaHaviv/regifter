@@ -11,7 +11,7 @@
           <br/>
           <%= image_tag @gift.image, class:"img-responsive"  %>
           <br/ >
-          <% if logged_in? && current_user[:id] != @gift.user[:id]%>
+          <% if logged_in? && current_user[:id] != @gift.user.id%>
             <p>Contact <%=link_to @gift.user.username, conversations_path%> for more information</p>
             <% if @accept %>
               <%= form_tag("/requests")%>
