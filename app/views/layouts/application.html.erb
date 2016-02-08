@@ -34,7 +34,9 @@
     <%= flash[:notice] %>
   <% end %>
 
-
+  <div class="container">
+   <%= yield %>
+  </div>
 
     <nav class="side-nav side-nav-left">
       <h2><%= link_to "SWAPR", root_path %></h2>
@@ -108,7 +110,7 @@
 
 <!-- Where slideshow used to be -->
 
-   <%= yield %>
+
 
       <footer>
         <div class="container-fluid">
