@@ -13,8 +13,7 @@
         <%= link_to 'Delete Profile', @user, method: :delete, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
     </div>
 <br><br><br>
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+<hr>
   <% if @gifts == [] %>
     <h4>Looks like you have no gifts listed.<br> <br><br><%= link_to "Add a Gift", "/gifts/new", class: "btn btn-default" %></h4><br>
     <% else %>
@@ -28,9 +27,11 @@
             </div>
 
             <div style="float:left;">
-              <%= button_to "Delete", { controller: :gifts, action: "destroy", id: gift.id }, method: :delete,
+            <%= button_to "Delete", {  remote: true, controller: :gifts, action: "destroy", id: gift.id }, method: :delete,
                                 class: "btn btn-default inline", data: { confirm: "Are you sure?" } %>
             </div>
+
+
             <div style="clear:both;"></div>
             <br/>
 
@@ -83,7 +84,7 @@
     <%sender_id = params[:id]%>
     <%recipient_id = User.find_by(name:user_one.name).id%>
 <br><br>
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------<br>
+<hr>
 <h3>Your Past Trades </h3>
     <div class="table-responsive">
       <table class="table">
@@ -116,13 +117,13 @@
                 <% if user_two == current_user %>
                   <p>You </p>
                 <% else %>
-                  <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=user_two.id%>&sender_id=<%=user_one.id%>"><%=user_two.username%> </a>
+                  <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=user_two.id%>&sender_id=<%=user_one.id%>"><%=user_one.username%> </a>
                 <% end %>
               <% else %>
                 <% if user_two == current_user %>
                   <p> You </p>
                 <% else %>
-                <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=user_two.id%>&sender_id=<%=user_one.id%>"><%=user_two.username%> </a>
+                <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=user_two.id%>&sender_id=<%=user_one.id%>"><%=user_one.username%> </a>
                 <% end %>
               <% end %>
             </td>
@@ -146,13 +147,13 @@
                 <% if user_one == current_user %>
                   <p>You </p>
                 <% else %>
-                  <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=user_two.id%>&sender_id=<%=user_one.id%>"><%=user_two.username%> </a>
+                  <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=user_one.id%>&sender_id=<%=user_two.id%>"><%=user_one.username%> </a>
                 <% end %>
               <% else %>
                 <% if user_two == current_user %>
                   <p> You </p>
                 <% else %>
-                <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=user_two.id%>&sender_id=<%=user_one.id%>"><%=user_two.username%> </a>
+                <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=user_one.id%>&sender_id=<%=user_two.id%>"><%=user_one.username%> </a>
                 <% end %>
               <% end %>
 
