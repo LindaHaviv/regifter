@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   root "home#index"
 
+  get 'contact', to: "home#contact"
+
   get 'signout', to: "sessions#destroy"
 
   get "signup", to: "users#new"
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   post "signin", to: "sessions#create"
   get "auth", to: "users#auth", as: "auth"
   resources :users, :categories, :search, :gifts, :requests, :swaps
+
 
   resources :gifts do
     resources :requests
