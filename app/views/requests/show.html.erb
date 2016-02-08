@@ -1,10 +1,15 @@
-<h1 style="color:green;">SWAP PROPOSED!!!!!!!</h1>
-<div class="container">
-  <div class="col-md-4">
-     <h2>GIVE ME THIS <%=@request.wanted_gift.title%> <br></h2>
-      <%= image_tag @request.wanted_gift.image, class:"style_image"  %>
+<h3>Proposed Swap</h3>
+  <div class="col-sm-6">
+    <div class="well well-lg">
+    <h4>Item requested: </h4>
+     <h5><%=@request.wanted_gift.title%> </h5><br/>
+      <%= image_tag @request.wanted_gift.image, class:"img-responsive"  %>
+    </div>
   </div>
-  <div class="col-md-4">
-     <h2>FOR MY <%=@request.unwanted_gift.title%><br></h2>
-    <%= image_tag @request.unwanted_gift.image, class:"style_image" %>
+  <div class="col-sm-6">
+    <div class="well well-lg">
+    <h4>Item offered in exchange: </h4>
+     <h5><%=@request.unwanted_gift.title%></h5><br/>
+    <%= image_tag @request.unwanted_gift.image, class:"img-responsive" %>
   </div>
+</div>
