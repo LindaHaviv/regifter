@@ -11,7 +11,7 @@
       <%= form_for(@request) do |f| %>
       <%=f.hidden_field :unwanted_id, value:gift.id%>
       <%=f.hidden_field :wanted_id, value:params[:gift_id]%>
-      <%= image_tag gift.image, size:"200x200", class:"style_image"  %><br>
+      <%= image_tag gift.image, size:"200x200", class:"img-responsive"  %><br>
       <br>
       <%=f.submit 'Propose Swap', class: "btn btn-primary"%>
     <%end%>
