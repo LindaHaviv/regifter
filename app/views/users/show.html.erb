@@ -23,15 +23,24 @@
       <div id=<%=gift.id%> class="gift">
           <%= gift.title.capitalize %><br>
           <% if logged_in? && params[:id].to_i == current_user.id%>
-              <h4><%= link_to 'Edit', edit_gift_path(gift), class: "btn btn-default" %> |
-                <%= link_to 'Delete', gift, method: :delete, class: "btn btn-default", data: { confirm: 'Are you sure?' }, remote: true %></h4><br>
-          <% elsif logged_in? && current_user[:id] != gift.user[:id]%>
+              <div style="float:left;">
+              <%= link_to 'Edit', edit_gift_path(gift), class: "btn btn-default inline" %> &nbsp
+            </div>
+
+            <div style="float:left;">
+              <%= button_to "Delete", { controller: :gifts, action: "destroy", id: gift.id }, method: :delete,
+                                class: "btn btn-default inline", data: { confirm: "Are you sure?" } %>
+            </div>
+            <div style="clear:both;"></div>
+            <br/>
+
+          <% elsif logged_in? && current_user.id != gift.user.id%>
             <p>Contact <%=gift.user.username%> for more information</p>
             <%= link_to 'Propose a Swap!', new_gift_request_path(gift), class: "btn btn-primary" %>
             <%= link_to "Message Seller", conversations_path, class: "btn btn-primary" %>
             </p>
           <% else %>
-            <p style="color:red;"> Sign in or sign up in order to propose a swap or message a user! </p>
+            <p style="color:teal;"> Sign in or sign up in order to propose a swap or message a user! </p>
           <%end%>
         <%= image_tag gift.image, size: "200x200", class: "style_image" %><br>
 
@@ -100,7 +109,20 @@
               <p><%=item_two.value%></p>
             </td>
             <td class="text-right">
-              <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=recipient_id%>&sender_id=<%=sender_id%>"><%=user_one.username%> </a>
+
+              <% if item_two.user == user_one %>
+                <% if user_two == current_user %>
+                  <p>You </p>
+                <% else %>
+                  <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=user_two.id%>&sender_id=<%=user_one.id%>"><%=user_two.username%> </a>
+                <% end %>
+              <% else %>
+                <% if user_two == current_user %>
+                  <p> You </p>
+                <% else %>
+                <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=user_two.id%>&sender_id=<%=user_one.id%>"><%=user_two.username%> </a>
+                <% end %>
+              <% end %>
             </td>
           </tr>
           <tr>
@@ -117,13 +139,25 @@
               <p><%=item_one.value%></p>
             </td>
             <td class="text-right">
-              <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=recipient_id%>&sender_id=<%=sender_id%>"><%=user_one.username%> </a>
+
+              <% if item_one.user == user_one %>
+                <% if user_two == current_user %>
+                  <p>You </p>
+                <% else %>
+                  <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=user_two.id%>&sender_id=<%=user_one.id%>"><%=user_two.username%> </a>
+                <% end %>
+              <% else %>
+                <% if user_two == current_user %>
+                  <p> You </p>
+                <% else %>
+                <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=user_two.id%>&sender_id=<%=user_one.id%>"><%=user_two.username%> </a>
+                <% end %>
+              <% end %>
+
             </td>
           </tr>
         </tbody>
       </table>
-
-    <!-- <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=recipient_id%>&sender_id=<%=sender_id%>">Message <%=user_one%> to coordinate the exchange!!</a> -->
-  <%end%>
-<%end%>
+      <% end %>
+      <% end %>
 </div>
