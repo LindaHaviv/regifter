@@ -36,6 +36,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @gifts = @user.get_user_gifts
+    @completed_swaps = Swap.where("new_owner_id = ?", @user.id)
   end
 
   def destroy

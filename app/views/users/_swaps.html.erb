@@ -1,0 +1,65 @@
+<h4>Your Completed Swaps </h4>
+  <% @completed_swaps.each do |swap| %>
+    <% @gift = Gift.find(swap.item_id) %>
+    <% @swapped_gift = Gift.find(swap.swapped_item_id) %>
+    <% @old_owner = User.find(swap.old_owner_id) %>
+    <% @new_owner = User.find(swap.new_owner_id) %>
+
+       <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <td class="text-left">Gift</td>
+              <td class="text-left">Description</td>
+              <td class="text-left">Brand</td>
+              <td class="text-left">Value</td>
+              <td class="text-right">Previous Owner</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left">
+                <p><%=@gift.title%></p>
+              </td>
+              <td class="text-left">
+                <p><%=@gift.description%></p>
+              </td>
+              <td class="text-left">
+                <p><%=@gift.brand%></p>
+              </td>
+              <td class="text-left">
+                <p><%=@gift.value%></p>
+              </td>
+              <td class="text-right">
+                <% if @old_owner == current_user %>
+                <p>You</p>
+                <% else %>
+                <p><%=@old_owner.username %></p>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <p><%=@swapped_gift.title%></p>
+              </td>
+              <td class="text-left">
+                <p><%=@swapped_gift.description%></p>
+              </td>
+              <td class="text-left">
+                <p><%=@swapped_gift.brand%></p>
+              </td>
+              <td class="text-left">
+                <p><%=@swapped_gift.value%></p>
+              </td>
+              <td class="text-right">
+                <% if @new_owner == current_user %>
+                <p>You</p>
+                <% else %>
+                <p><%=@new_owner.username %></p>
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+<% end %>
