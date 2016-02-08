@@ -1,6 +1,4 @@
-<h4><strong>USER: </strong><%= @user.name %>
-<h4><br>
-    <div>
+<h4><strong>USER: </strong><%= @user.name %></h4>
 
   <% if logged_in? && params[:id].to_i == current_user.id%>
   <div>
@@ -12,157 +10,18 @@
         <%= link_to 'Edit User', edit_user_path, class: "btn btn-default" %>
         <%= link_to 'Delete Profile', @user, method: :delete, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
     </div>
-<br><br><br>
-<hr>
-  <% if @gifts == [] %>
-    <h4>Looks like you have no gifts listed.<br> <br><br><%= link_to "Add a Gift", "/gifts/new", class: "btn btn-default" %></h4><br>
-    <% else %>
-      <h4>Your unwanted gifts:</h4><br>
-    <% @gifts.each do |gift| %>
-      <div id=<%=gift.id%> class="gift">
-          <%= gift.title.capitalize %><br>
-          <% if logged_in? && params[:id].to_i == current_user.id%>
-              <div style="float:left;">
-              <%= link_to 'Edit', edit_gift_path(gift), class: "btn btn-default inline" %> &nbsp
-            </div>
-
-            <div style="float:left;">
-            <%= button_to "Delete", {  remote: true, controller: :gifts, action: "destroy", id: gift.id }, method: :delete,
-                                class: "btn btn-default inline", data: { confirm: "Are you sure?" } %>
-            </div>
-
-
-            <div style="clear:both;"></div>
-            <br/>
-
-          <% elsif logged_in? && current_user.id != gift.user.id%>
-            <p>Contact <%=gift.user.username%> for more information</p>
-            <%= link_to 'Propose a Swap!', new_gift_request_path(gift), class: "btn btn-primary" %>
-            <%= link_to "Message Seller", conversations_path, class: "btn btn-primary" %>
-            </p>
+          <br><br><br>
+          <hr>
+          <% if @gifts == [] %>
+          <h4>Looks like you have no gifts listed.<br> <br><br><%= link_to "Add a Gift", "/gifts/new", class: "btn btn-default" %></h4><br>
+          <hr>
           <% else %>
-            <p style="color:teal;"> Sign in or sign up in order to propose a swap or message a user! </p>
-          <%end%>
-        <%= image_tag gift.image, size: "200x200", class: "style_image" %><br>
+          <%= render "my_gifts" %>
+          <% end %>
 
-        <%@swaps={}%>
+    <% if @completed_swaps != [] %>
+    <%= render "swaps" %>
+    <% end %>
 
-        <%@unwanted_gift = nil%>
-        <%@wanted_gift = nil%>
-
-        <%gift.requests_wanted.map do |x| %>
-          <%@swaps[x.unwanted_gift.user.username]= x.unwanted_gift.title %>
-          <%@unwanted_gift= x.unwanted_gift%>
-          <%@wanted_gift = x.wanted_gift%>
-        <%end%>
-
-          <% if logged_in? && params[:id].to_i == current_user.id%>
-              <%@swaps.each do |person, gift|%>
-                <h4>Swap pending. Proposed by: <%=person%><br></h4>
-                <%= form_tag(accept_path(@unwanted_gift)) do |f| %>
-                  <%=hidden_field_tag :wanted_id, @wanted_gift.id%>
-                  <%=submit_tag 'View Trade', class: "btn btn-primary" %>
-                <%end%>
-                <h4>trade: <%=gift%></h4><br><br><br>
-              <%end%>
-          <%end%>
-        <%end%>
-      </div>
-  <% end %>
-
-<%@user.gifts.each do |gift| %>
-  <%if !gift.items.empty? %>
-    <!-- <%item_one = gift.items.map {|x| x.item.title}.first%> -->
-    <% item_one = gift.items.first.item %>
-    <!-- <%item_two = gift.items.map {|x| x.swapped_item.title}.first%> -->
-    <% item_two = gift.items.first.swapped_item %>
-
-    <!-- <%user_one = gift.items.map {|x| x.old_owner.name}.first%> -->
-    <% user_one = gift.items.first.old_owner %>
-    <!-- <%user_two = gift.items.map {|x| x.new_owner.name}.first%> -->
-    <% user_two = gift.items.first.new_owner %>
-    <%sender_id = params[:id]%>
-    <%recipient_id = User.find_by(name:user_one.name).id%>
-<br><br>
-<hr>
-<h3>Your Past Trades </h3>
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <td class="text-left">Gift</td>
-            <td class="text-left">Description</td>
-            <td class="text-left">Brand</td>
-            <td class="text-left">Value</td>
-            <td class="text-right">Previous Owner</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="text-left">
-              <p><%=item_two.title%></p>
-            </td>
-            <td class="text-left">
-              <p><%=item_two.description%></p>
-            </td>
-            <td class="text-left">
-              <p><%=item_two.brand%></p>
-            </td>
-            <td class="text-left">
-              <p><%=item_two.value%></p>
-            </td>
-            <td class="text-right">
-
-              <% if item_two.user == user_one %>
-                <% if user_two == current_user %>
-                  <p>You </p>
-                <% else %>
-                  <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=user_two.id%>&sender_id=<%=user_one.id%>"><%=user_one.username%> </a>
-                <% end %>
-              <% else %>
-                <% if user_two == current_user %>
-                  <p> You </p>
-                <% else %>
-                <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=user_two.id%>&sender_id=<%=user_one.id%>"><%=user_one.username%> </a>
-                <% end %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td class="text-left">
-              <p><%=item_one.title%></p>
-            </td>
-            <td class="text-left">
-              <p><%=item_one.description%></p>
-            </td>
-            <td class="text-left">
-              <p><%=item_one.brand%></p>
-            </td>
-            <td class="text-left">
-              <p><%=item_one.value%></p>
-            </td>
-            <td class="text-right">
-
-              <% if item_one.user == user_two %>
-                <% if user_one == current_user %>
-                  <p>You </p>
-                <% else %>
-                  <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=user_one.id%>&sender_id=<%=user_two.id%>"><%=user_one.username%> </a>
-                <% end %>
-              <% else %>
-                <% if user_two == current_user %>
-                  <p> You </p>
-                <% else %>
-                <a rel="nofollow" data-method="post" href="/conversations?recipient_id=<%=user_one.id%>&sender_id=<%=user_two.id%>"><%=user_one.username%> </a>
-                <% end %>
-              <% end %>
-
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <% end %>
-      <% end %>
-</div>
-</div>
 <% end %>
+</div>
