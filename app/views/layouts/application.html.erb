@@ -10,7 +10,6 @@
 
 
 
-    <%= csrf_meta_tags %>
 
    <link href="//fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet">
 
@@ -26,15 +25,20 @@
     <![endif]-->
   </head>
   <body>
+  <% if flash[:error] %>
+    <%= flash[:error] %>
+  <% end %>
 
-    <div class="container">
-      <%= yield %>
-    </div>
+
+  <% if flash[:notice] %>
+    <%= flash[:notice] %>
+  <% end %>
+
+
 
     <nav class="side-nav side-nav-left">
-      <h2><a href="#">SW</a></h2>
+      <h2><%= link_to "SWAPR", root_path %></h2>
       <ul class="list-unstyled">
-        <li><%= link_to "Add a Gift", new_gift_path %></li>
         <li><%= link_to "All Gifts", gifts_path %></li>
         <li><a href="#">Contact</a></li>
       </ul>
@@ -53,8 +57,15 @@
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon ion-ios-person-outline" data-toggle="tooltip" data-placement="bottom" title="My Account"></i></a>
                     <ul class="dropdown-menu dropdown-menu-right text-center">
                       <li class="dropdown-triangle"></li>
-                      <li><a href="#">Register</a></li>
-                      <li><a href="#">Login</a></li>
+                        <% if logged_in? %>
+                          <li><%= link_to "Profile", user_path(current_user) %></li>
+                          <li><%= link_to "Add a Gift", new_gift_path %></li>
+                          <li><%= link_to "Messages", conversations_path %></li>
+                          <li><%= link_to "Sign Out", signout_path, method: :delete %></li>
+                        <% else %>
+                          <li><%= link_to "Sign In", signin_path %></li>
+                          <li><%= link_to "Sign Up", signup_path %></li>
+                           <%end%>
                     </ul>
                   </li>
                 </ul>
@@ -97,7 +108,7 @@
 
 <!-- Where slideshow used to be -->
 
-
+   <%= yield %>
 
       <footer>
         <div class="container-fluid">
