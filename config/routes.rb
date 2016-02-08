@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'errors/not_found'
+
+  get 'errors/internal_server_error'
+
   root "home#index"
 
   get 'signout', to: "sessions#destroy"
@@ -18,7 +22,7 @@ Rails.application.routes.draw do
     resources :messages
   end
   post 'gifts/accept/:id', to: 'gifts#accept', as: 'accept'
+
+  get "/404" => "errors#not_found"
+  get "/500" => "errors#internal_server_error"
 end
-
-
-
