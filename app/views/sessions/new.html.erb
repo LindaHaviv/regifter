@@ -1,6 +1,7 @@
 
 
 
+
 <div class="container">
 
 <ul class="breadcrumb">
@@ -38,3 +39,27 @@
           <% end %><br>
       </div>
 </div>
+=======
+<div class="container">
+  <div class="col-xs-12">
+    <%= bootstrap_form_for(:session, url: signin_path) do |f| %>
+    <div class="field">
+      <%= f.text_field :username, icon: "user" %><br>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :email, placeholder:'name@example.com'  %><br>
+    </div>
+
+    <div class="field">
+      <%= f.password_field :password %><br>
+    </div>
+    <%= f.check_box :remember_me %>
+    <div class="actions">
+      <%= f.submit "Log In"%>
+    </div>
+    <% end %><br>
+    <%=link_to 'Back to home', root_path%>
+  </div>
+</div>
+<br />
