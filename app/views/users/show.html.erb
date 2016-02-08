@@ -1,4 +1,9 @@
-<h4><strong>USER: </strong><%= @user.name %>
+
+<div class="container">
+
+<h2>Your Profile</h2> 
+<br>
+<h4><strong>USER: </strong><%= @user.name.capitalize %>
 <h4><br>
     <div>
 
@@ -21,7 +26,7 @@
       <h4>Your unwanted gifts:</h4><br>
     <% @gifts.each do |gift| %>
       <div id=<%=gift.id%> class="gift">
-          <%= gift.title.capitalize %><br>
+          <h3><%= gift.title.capitalize %></h3><br>
           <% if logged_in? && params[:id].to_i == current_user.id%>
               <div style="float:left;">
               <%= link_to 'Edit', edit_gift_path(gift), class: "btn btn-default inline" %> &nbsp
@@ -42,7 +47,7 @@
           <% else %>
             <p style="color:teal;"> Sign in or sign up in order to propose a swap or message a user! </p>
           <%end%>
-        <%= image_tag gift.image, size: "200x200", class: "style_image" %><br>
+        <%= image_tag gift.image, size: "200x200", class: "style_image" %><br><br><br>
 
         <%@swaps={}%>
 
@@ -165,3 +170,4 @@
 </div>
 </div>
 <% end %>
+</div>
