@@ -371,8 +371,8 @@ header i:hover {
   left: 0;
   z-index: 9998;
   background-color: rgba(79,95,111,0.3);
-  -webkit-animation: fade 500ms; 
-     -moz-animation: fade 500ms; 
+  -webkit-animation: fade 500ms;
+     -moz-animation: fade 500ms;
        -o-animation: fade 500ms;
           animation: fade 500ms;
 }
