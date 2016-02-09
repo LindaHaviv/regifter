@@ -21,13 +21,12 @@
                       <%=submit_tag "Message "+@gift.user.username+" here", class: "btn btn-primary btn-block"%>
                   <%end%>
 <!-- accept swap -->
-<%=binding.pry%>
+
               <% if @accept %>
-              <%=binding.pry%>
-                <%=render "accept"%>
+                  <%=render "accept"%>
               <%else%>
-                <%= link_to 'Propose Swap!', new_gift_request_path(@gift), class: "btn btn-primary btn-block" %>
-            <%end%>
+                  <%= link_to 'Propose Swap!', new_gift_request_path(@gift), class: "btn btn-primary btn-block" %>
+              <%end%>
         </p>
         <% elsif logged_in? %>
         <p class="accent"> This item belongs to you </p>

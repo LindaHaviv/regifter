@@ -1,7 +1,7 @@
 
 <h3> These are your swapping options, <%=current_user.name%>. Good luck with that </h3>
 
-<%current_user.gifts.each do |gift|%>
+<%current_user.get_user_gifts.each do |gift|%>
 <div class= "col-md-3">
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -13,7 +13,7 @@
       <%=f.hidden_field :wanted_id, value:params[:gift_id]%>
       <%= image_tag gift.image, size:"200x200", class:"img-responsive"  %><br>
       <br>
-      <%=f.submit 'Propose Swap', class: "btn btn-primary"%>
+      <%=f.submit "Trade your "+gift.title, class: "btn btn-primary"%>
     <%end%>
     </div>
     </div>
