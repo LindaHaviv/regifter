@@ -5,103 +5,107 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Regifter</title>
+       <title>Regifter</title>
 
-    <link href="//fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+   <link href="//fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet">
+
+   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+
+
 
   </head>
   <body>
-    <% if flash[:error] %>
+  <% if flash[:error] %>
     <%= flash[:error] %>
-    <% end %>
+  <% end %>
 
-    <% if flash[:notice] %>
+
+  <% if flash[:notice] %>
     <%= flash[:notice] %>
-    <% end %>
+  <% end %>
 
     <nav class="side-nav side-nav-left">
       <h2><%= link_to "SWAPR", root_path %></h2>
       <ul class="list-unstyled">
         <li><%= link_to "All Gifts", gifts_path %></li>
         <% Category.all.each do |category| %>
-        <li><%= link_to category.title, gifts_path(category: category.id) %></li>
+          <li><%= link_to category.title, gifts_path(category: category.id)%></li>
         <% end %>
       </ul>
     </nav>
-    <div class="site-overlay"></div>
+    <div class="site-overlay"></div> 
     <div class="wrapper">
+
       <header>
         <div class="container-fluid">
+
           <div class="row">
             <div class="col-sm-12">
-              <div class="menu pull-left" data-toggle="tooltip" data-placement="bottom" title="Menu">
-                <i class="icon ion-ios-more"></i>
-              </div>
+              <div class="menu pull-left" data-toggle="tooltip" data-placement="bottom" title="Menu"><i class="icon ion-ios-more"></i></div>
               <div class="account pull-right">
                 <ul class="list-inline">
                   <li class="dropdown">
-                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                      <i class="icon ion-ios-person-outline" data-toggle="tooltip" data-placement="bottom" title="My Account"></i>
-                    </a>
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon ion-ios-person-outline" data-toggle="tooltip" data-placement="bottom" title="My Account"></i></a>
                     <ul class="dropdown-menu dropdown-menu-right text-center">
                       <li class="dropdown-triangle"></li>
-                      <% if logged_in? %>
-                      <li><%= link_to "Profile", user_path(current_user) %></li>
-                      <li><%= link_to "Add a Gift", new_gift_path %></li>
-                      <li><%= link_to "Messages", conversations_path %></li>
-                      <li><%= link_to "Sign Out", signout_path, method: :delete %></li>
-                    <% else %>
-                      <li><%= link_to "Sign In", signin_path %></li>
-                      <li><%= link_to "Sign Up", signup_path %></li>
-                      <%end%>
+                        <% if logged_in? %>
+                          <li><%= link_to "Profile", user_path(current_user) %></li>
+                          <li><%= link_to "Add a Gift", new_gift_path %></li>
+                          <li><%= link_to "Messages", conversations_path %></li>
+                          <li><%= link_to "Sign Out", signout_path, method: :delete %></li>
+                        <% else %>
+                          <li><%= link_to "Sign In", signin_path %></li>
+                          <li><%= link_to "Sign Up", signup_path %></li>
+                        <%end%>
                     </ul>
                   </li>
                 </ul>
               </div>
+
               <div class="search pull-right">
                 <div class="btn-group">
-
-                  <form action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
-                    <a href="/search" data-toggle="dropdown" class="dropdown-toggle">
-                      <i class="icon ion-ios-search-strong" data-toggle="tooltip" data-placement="bottom" data-container="body" title="Search"></i>
-                    </a>
-                    <ul class="dropdown-menu pull-right">
+      <form action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+                  <a href="/search" data-toggle="dropdown" class="dropdown-toggle"><i class="icon ion-ios-search-strong" data-toggle="tooltip" data-placement="bottom" data-container="body" title="Search"></i></a>
+                  <ul class="dropdown-menu pull-right">
                       <li class="dropdown-triangle"></li>
                       <li>
                         <div class="input-group">
-                          <input type="text" name="query" id="query" placeholder="I want to find..." class="form-control">
+                            <input type="text" name="query" id="query" placeholder="I want to find..." class="form-control">
                           <div class="input-group-btn">
                             <input type="submit" name="commit" value="Search" class="btn btn-default">
                           </div>
                         </div>
-                      </form>
+                      </li>
+                    </ul>
+          </form> 
+</div>
 
-                    </li>
-                  </ul>
+
                 </div>
               </div>
+
             </div>
           </div>
         </div>
+      </div>
       </header>
 
-      <!-- Where slideshow used to be -->
-      <div class="container">
-        <%= yield %>
-      </div>
-      <br><br><br><br><br><br><br>
+<!-- Where slideshow used to be -->
+  <div class="container">
+     <%= yield %>
+  </div>
+
       <footer>
-        <div class="container-fluid">
+
           <div class="row">
+
             <div class="col-sm-2">
               <div class="btn-group dropup info">
                 <button type="button" class="dropdown-toggle">
                   <i class="icon ion-ios-information-outline"></i>
                   <span><%= link_to 'Contact Us', contact_path, {style: "color:white"}  %></span>
                 </button>
-
               </div>
             </div>
 
@@ -122,21 +126,14 @@
                 </button>
                 <ul class="dropdown-menu pull-right">
                   <li class="dropdown-triangle"></li>
-                  <li>
-                    <a href="#">Brands</a>
-                  </li>
-                  <li>
-                    <a href="#">Gift Vouchers</a>
-                  </li>
-                  <li>
-                    <a href="#">Affiliates</a>
-                  </li>
-                  <li>
-                    <a href="#">Specials</a>
-                  </li>
+                  <li><a href="#">Brands</a></li>
+                  <li><a href="#">Gift Vouchers</a></li>
+                  <li><a href="#">Affiliates</a></li>
+                  <li><a href="#">Specials</a></li>
                 </ul>
               </div>
             </div>
+
             <div class="col-sm-2">
               <div class="btn-group dropup user-account">
                 <button type="button" data-toggle="dropdown" class="dropdown-toggle">
@@ -145,21 +142,14 @@
                 </button>
                 <ul class="dropdown-menu pull-right">
                   <li class="dropdown-triangle"></li>
-                  <li>
-                    <a href="#">My Account</a>
-                  </li>
-                  <li>
-                    <a href="#">Order History</a>
-                  </li>
-                  <li>
-                    <a href="#">Wishlist</a>
-                  </li>
-                  <li>
-                    <a href="#">Newsletter</a>
-                  </li>
+                  <li><a href="#">My Account</a></li>
+                  <li><a href="#">Order History</a></li>
+                  <li><a href="#">Wishlist</a></li>
+                  <li><a href="#">Newsletter</a></li>
                 </ul>
               </div>
             </div>
+
             <div class="col-sm-2">
               <div class="btn-group dropup social">
                 <button type="button" data-toggle="dropdown" class="dropdown-toggle">
@@ -168,27 +158,16 @@
                 </button>
                 <ul class="dropdown-menu pull-right">
                   <li class="dropdown-triangle"></li>
-                  <li>
-                    <a href="https://www.facebook.com/">Facebook</a>
-                  </li>
-                  <li>
-                    <a href="https://twitter.com/">Twitter</a>
-                  </li>
-                  <li>
-                    <a href="https://www.pinterest.com/">Pinterest</a>
-                  </li>
-                  <li>
-                    <a href="https://plus.google.com/">Google Plus</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/">Github</a>
-                  </li>
-                  <li>
-                    <a href="skype:******?call">Skype</a>
-                  </li>
+                  <li><a href="https://www.facebook.com/">Facebook</a></li>
+                  <li><a href="https://twitter.com/">Twitter</a></li>
+                  <li><a href="https://www.pinterest.com/">Pinterest</a></li>
+                  <li><a href="https://plus.google.com/">Google Plus</a></li>
+                  <li><a href="https://github.com/">Github</a></li>
+                  <li><a href="skype:******?call">Skype</a></li>
                 </ul>
               </div>
             </div>
+
             <div class="col-sm-2">
               <div class="btn-group dropup powered">
                 <button type="button" data-toggle="dropdown" class="dropdown-toggle">
@@ -197,33 +176,27 @@
                 </button>
                 <ul class="dropdown-menu pull-right">
                   <li class="dropdown-triangle"></li>
-                  <li>
-                    <a href="https://github.com/LindaHaviv">Linda</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/jscheuc1">Johnny</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/leighsn">Leigh</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/nat-ser">Nataliya</a>
-                  </li>
+                  <li><a href="https://github.com/LindaHaviv">Linda</a></li>
+                  <li><a href="https://github.com/jscheuc1">Johnny</a></li>
+                  <li><a href="https://github.com/leighsn">Leigh</a></li>
+                  <li><a href="https://github.com/nat-ser">Nataliya</a></li>
                 </ul>
               </div>
             </div>
+
           </div>
-        </div>
-    </footer>
-    </div>
 
-  <span id="home"></span>
+      </footer>
+  </div>
 
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
-  <script>
-    $(document).ready(function () {
+    <span id="home"></span>
 
+   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+
+    <script>
+    $(document).ready(function() {
       // Main banners slideshow
       $("#slideshow").owlCarousel({
         items: 6,
@@ -231,16 +204,12 @@
         singleItem: true,
         navigation: true,
         responsive: true,
-        navigationText: [
-          '<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'
-        ],
+        navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
         pagination: true
       });
-
       // scrollReveal plugin
       window.sr = new scrollReveal();
-
     });
-  </script>
-</body>
+    </script>
+  </body>
 </html>
