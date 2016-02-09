@@ -12,17 +12,21 @@
           <%= image_tag @gift.image, class:"img-responsive"  %>
           <br/ >
           <% if logged_in? && current_user[:id] != @gift.user.id%>
-            <p>Contact <%=link_to @gift.user.username, conversations_path%> for more information</p>
-            <% if @accept %>
-              <%= form_tag("/requests")%>
-              <%= fields_for :request do |requests_form| %>
-              <%= requests_form.hidden_field :unwanted_id, value:@wanted_id %>
-              <%= requests_form.hidden_field :wanted_id, value:(@gift.id) %>
-              <%=submit_tag 'Accept Swap', class: "btn btn-primary btn-block"%>
-            <% end %>
-          <%else%>
-          <%= link_to 'Propose Swap!', new_gift_request_path(@gift), class: "btn btn-primary btn-block" %>
-          <%end%>
+              <%user_to_message=@gift.user.id%>
+              <%sender=current_user.id%>
+<!-- start convo -->
+                  <%= form_tag(conversations_path) do%>
+                      <%=hidden_field_tag :sender_id, sender%>
+                      <%= hidden_field_tag :recipient_id, user_to_message %>
+                      <%=submit_tag "Message "+@gift.user.username+" here", class: "btn btn-primary btn-block"%>
+                  <%end%>
+<!-- accept swap -->
+
+              <% if @accept %>
+                  <%=render "accept"%>
+              <%else%>
+                  <%= link_to 'Propose Swap!', new_gift_request_path(@gift), class: "btn btn-primary btn-block" %>
+              <%end%>
         </p>
         <% elsif logged_in? %>
         <p class="accent"> This item belongs to you </p>

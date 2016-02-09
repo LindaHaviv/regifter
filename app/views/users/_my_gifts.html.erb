@@ -4,7 +4,7 @@
     <%= gift.title.capitalize %><br>
     <% if logged_in? && params[:id].to_i == current_user.id%>
         <div style="float:left;">
-        <%= link_to 'Edit', edit_gift_path(gift), class: "btn btn-default inline" %> &nbsp
+        <%= link_to 'Edit', edit_gift_path(gift), class: "btn btn-default inline" %>
       </div>
 
       <div style="float:left;">
@@ -37,16 +37,19 @@
           <%@wanted_gift = x.wanted_gift%>
         <%end%>
 
-  <% end %>
+
+
           <% if logged_in? && params[:id].to_i == current_user.id%>
+
               <%@swaps.each do |person, gift|%>
                 <h4>Swap pending. Proposed by: <%=person%><br></h4>
-                <%= form_tag(accept_path(@unwanted_gift)) do |f| %>
-                  <%=hidden_field_tag :wanted_id, @wanted_gift.id%>
-                  <%=submit_tag 'View Trade', class: "btn btn-primary" %>
-                <%end%>
+                  <%= form_tag(accept_path(@unwanted_gift)) do |f| %>
+                    <%=hidden_field_tag :wanted_id, @wanted_gift.id%>
+                    <%=submit_tag 'View Trade', class: "btn btn-primary" %>
+                  <%end%>
                 <h4>Trade: <%=gift%></h4><br><br><br>
               <%end%>
           <%end%>
       </div>
       <br/>
+  <% end %>

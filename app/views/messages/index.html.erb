@@ -4,11 +4,7 @@
 <%= link_to 'Show Previous', '?m=all' %>
 <% end %>
 
-<%recipient_id =Conversation.find(@messages.first[:conversation_id])[:recipient_id]%>
 
-<h3 class="pretty_username">You are talking to
-  <%=(User.find(recipient_id).name).capitalize%>
-  right now:</h3>
 <div class="ui segment messages">
   <% @messages.each do |message| %>
   <% if message.body %>
