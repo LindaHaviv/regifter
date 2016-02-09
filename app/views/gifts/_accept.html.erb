@@ -1,0 +1,7 @@
+<%= form_tag("/requests") do%>
+  <%= fields_for :request do |requests_form| %>
+  <%= requests_form.hidden_field :unwanted_id, value:(@gift.id)%>
+  <%= requests_form.hidden_field :wanted_id, value:(params[:wanted_id]) %>
+  <%=submit_tag 'Accept Swap', class: "btn btn-primary btn-block"%>
+  <% end %>
+<%end%>
