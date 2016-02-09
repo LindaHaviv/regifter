@@ -1,7 +1,3 @@
-
-
-
-
 <div class="container">
 
 <ul class="breadcrumb">
@@ -12,32 +8,32 @@
       <h1>Sign In</h1>
     </div>
   <%= form_for(:session, url: signin_path, class: "form-horizontal") do |f| %>
-      <div class = "col-sm-12">
-         <div class="form-group required">
-           <%= f.label "Username", class: "col-sm-2 control-label" %>
-            <%= f.text_field :username, class: "form-control", icon: "user" %><br>
-          </div>
-
-          <div class="form-group required">
-            <%= f.label "Email:", class: "col-sm-2 control-label" %>
-            <%= f.text_field :email, placeholder:'name@example.com', class: "form-control"  %><br>
-          </div>
-
-          <div class="form-group required">
-            <%= f.label "Password", class: "col-sm-2 control-label" %>
-            <%= f.password_field :password, class: "form-control" %><br>
-          </div>
-
-         <div>
-          <%= f.check_box :remember_me %>
-          <%= f.label "Remember Me" %>
-         </div><br>
-
-          <div class="actions">
-            <%= f.submit "Log In", class: "btn btn-primary"%>
-          </div>
-          <% end %><br>
+    <div class = "col-sm-12">
+      <div class="form-group required">
+        <%= f.label "Username", class: "col-sm-2 control-label" %>
+        <%= f.text_field :username, class: "form-control", icon: "user" %><br>
       </div>
+
+      <div class="form-group required">
+        <%= f.label "Email:", class: "col-sm-2 control-label" %>
+        <%= f.text_field :email, placeholder:'name@example.com', class: "form-control"  %><br>
+      </div>
+
+      <div class="form-group required">
+        <%= f.label "Password", class: "col-sm-2 control-label" %>
+        <%= f.password_field :password, class: "form-control" %><br>
+      </div>
+
+      <div>
+        <%= f.check_box :remember_me %>
+        <%= f.label "Remember Me" %>
+      </div><br>
+
+      <div class="actions">
+        <%= f.submit "Log In", class: "btn btn-primary"%>
+      </div>
+    <br>
+    </div>
+  <% end %>
+
 </div>
-
-
