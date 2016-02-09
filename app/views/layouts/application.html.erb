@@ -97,23 +97,103 @@
 <!-- <div class="container"> -->
    <%= yield %>
 <!--  </div> -->
-
+<br><br><br><br><br><br><br>
       <footer>
         <div class="container-fluid">
           <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-2">
               <div class="btn-group dropup info">
                 <button type="button" class="dropdown-toggle">
                   <i class="icon ion-ios-information-outline"></i>
-                  <span><%= link_to 'Contact Us', contact_path %></span>
+                  <span><%= link_to 'Contact Us', contact_path, {style: "color:white"}  %></span>
                 </button>
-      
+
               </div>
             </div>
-          
+
+            <div class="col-sm-2">
+              <div class="btn-group dropup service">
+                <button type="button" class="dropdown-toggle">
+                  <i class="icon ion-ios-people-outline"></i>
+                  <span><%= link_to 'Customer Service', contact_path, {style: "color:white"} %></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="col-sm-2">
+              <div class="btn-group dropup extra">
+                <button type="button" data-toggle="dropdown" class="dropdown-toggle">
+                  <i class="icon ion-ios-flask-outline"></i>
+                  <span>Extras</span>
+                </button>
+                <ul class="dropdown-menu pull-right">
+                  <li class="dropdown-triangle"></li>
+                  <li><a href="#">Brands</a></li>
+                  <li><a href="#">Gift Vouchers</a></li>
+                  <li><a href="#">Affiliates</a></li>
+                  <li><a href="#">Specials</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group dropup user-account">
+                <button type="button" data-toggle="dropdown" class="dropdown-toggle">
+                  <i class="icon ion-ios-person-outline"></i>
+                  <span>My Account</span>
+                </button>
+                <ul class="dropdown-menu pull-right">
+                  <li class="dropdown-triangle"></li>
+                  <li><a href="#">My Account</a></li>
+                  <li><a href="#">Order History</a></li>
+                  <li><a href="#">Wishlist</a></li>
+                  <li><a href="#">Newsletter</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group dropup social">
+                <button type="button" data-toggle="dropdown" class="dropdown-toggle">
+                  <i class="icon ion-ios-world-outline"></i>
+                  <span>Social</span>
+                </button>
+                <ul class="dropdown-menu pull-right">
+                  <li class="dropdown-triangle"></li>
+                  <li><a href="https://www.facebook.com/">Facebook</a></li>
+                  <li><a href="https://twitter.com/">Twitter</a></li>
+                  <li><a href="https://www.pinterest.com/">Pinterest</a></li>
+                  <li><a href="https://plus.google.com/">Google Plus</a></li>
+                  <li><a href="https://github.com/">Github</a></li>
+                  <li><a href="skype:******?call">Skype</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group dropup powered">
+                <button type="button" data-toggle="dropdown" class="dropdown-toggle">
+                  <i class="icon ion-ios-bolt-outline"></i>
+                  <span>Designed with love by:</span>
+                </button>
+                <ul class="dropdown-menu pull-right">
+                  <li class="dropdown-triangle"></li>
+                  <li><a href="https://github.com/LindaHaviv">Linda</a></li>
+                  <li><a href="https://github.com/jscheuc1">Johnny</a></li>
+                  <li><a href="https://github.com/leighsn">Leigh</a></li>
+                  <li><a href="https://github.com/nat-ser">Nataliya</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
+          </div>
+          </div>
+
+
       </footer>
+
+
+
+
+
+
 
     </div>
     <span id="home"></span>
