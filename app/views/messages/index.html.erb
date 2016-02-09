@@ -3,7 +3,7 @@
 <% if @over_ten %>
 <%= link_to 'Show Previous', '?m=all' %>
 <% end %>
-
+</div>
 
 <div class="ui segment messages">
   <% @messages.each do |message| %>
@@ -12,7 +12,7 @@
   <% end %>
   <% end %>
 </div>
-
+<div>
 <%= form_for [@conversation, @message], html: {class: "ui reply form"}, remote: true do |f| %>
 <div class="field">
   <%= f.text_area :body, class: "form-control" %>
