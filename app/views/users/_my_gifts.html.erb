@@ -22,8 +22,8 @@
 
             <% if logged_in? && params[:id].to_i == current_user.id%>
 
-                <div style="padding:0px" class="align-bottom col-sm-12">
-                    <div style="padding:0px" class="col-xs-4">
+                <div style="padding:0px" class="align-bottom col-sm-11">
+                    <div style="padding:0px" class="col-xs-3">
                       <%= link_to 'Edit', edit_gift_path(gift), class: "btn btn-default" %> &nbsp
                     </div>
                   <div style="padding:0px" class="col-xs-4">
