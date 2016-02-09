@@ -1,9 +1,8 @@
 
-<div class="container">
+
 
 <h2>Your Profile</h2>
 <br>
-  <div>
     <h4><strong>USER: </strong><%= @user.name %></h4>
 
   <% if logged_in? && params[:id].to_i == current_user.id%>
@@ -27,4 +26,3 @@
     <% if @completed_swaps != [] %>
       <%= render "swaps" %>
     <% end %>
-</div>

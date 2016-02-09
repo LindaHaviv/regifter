@@ -1,4 +1,3 @@
-<div>
 <h4>Your unwanted gifts:</h4>
 <% @gifts.each do |gift| %>
     <div id=<%=gift.id%> class="col-xs-6 col-md-4">
@@ -7,26 +6,22 @@
           <h3 class="panel-title"><%= link_to gift.title.capitalize %></h3>
         </div>
         <div class="panel-body">
-            <% if logged_in? && current_user.id != gift.user.id%>
-              <p>Contact <%=gift.user.username%> for more information</p>
-              <%= link_to 'Propose a Swap!', new_gift_request_path(gift), class: "btn btn-primary" %>
-              <%= link_to "Message Seller", conversations_path, class: "btn btn-primary" %>
-              <p style="color:teal;"> Sign in or sign up in order to propose a swap or message a user! </p>
-            <%end%>
 
+<div>
             <%= image_tag gift.image, class: "img-responsive" %><br>
 
             <% if logged_in? && params[:id].to_i == current_user.id%>
-            <div class="align-bottom">
-              <div style="float:left;">
-                <%= link_to 'Edit', edit_gift_path(gift), class: "btn btn-default" %> &nbsp
+                <div class="align-bottom">
+                    <div style="float:left;">
+                      <%= link_to 'Edit', edit_gift_path(gift), class: "btn btn-default" %> &nbsp
+                    </div>
+                  <div style="float:right;">
+                    <%= button_to "Delete", {  remote: true, controller: :gifts, action: "destroy", id: gift.id }, method: :delete,
+                    class: "btn btn-default", data: { confirm: "Are you sure?" } %>
+                  </div>
               </div>
-              <div style="float:right;">
-                <%= button_to "Delete", {  remote: true, controller: :gifts, action: "destroy", id: gift.id }, method: :delete,
-                class: "btn btn-default", data: { confirm: "Are you sure?" } %>
-              </div>
-            </div>
             <% end %>
+</div>
             <div style="clear:both;"></div>
 
             <%@swaps={}%>
@@ -35,28 +30,28 @@
             <%@wanted_gift = nil%>
 
             <%gift.requests_wanted.map do |x| %>
-            <%@swaps[x.unwanted_gift.user.username]= x.unwanted_gift.title %>
-            <%@unwanted_gift= x.unwanted_gift%>
-            <%@wanted_gift = x.wanted_gift%>
+              <%@swaps[x.unwanted_gift.user.username]= x.unwanted_gift.title %>
+              <%@unwanted_gift= x.unwanted_gift%>
+              <%@wanted_gift = x.wanted_gift%>
             <%end%>
 
             <% if logged_in? && params[:id].to_i == current_user.id%>
-            <%@swaps.each do |person, gift|%>
-            <div class="align-bottom">
-              <div class="align-bottom">
-                <h4>Swap pending. Proposed by: <%=person%></h4><br>
+                <%@swaps.each do |person, gift|%>
+                    <div class="align-bottom">
+                      <div class="align-bottom">
+                        <h4>Swap pending. Proposed by: <%=person%></h4><br>
 
-                <%= form_tag(accept_path(@unwanted_gift)) do |f| %>
-                <%=hidden_field_tag :wanted_id, @wanted_gift.id%>
-                <%=submit_tag 'View Trade', class: "btn btn-primary" %>
-                <%end%>
+                        <%= form_tag(accept_path(@unwanted_gift)) do |f| %>
+                          <%=hidden_field_tag :wanted_id, @wanted_gift.id%>
+                          <%=submit_tag 'View Trade', class: "btn btn-primary" %>
+                        <%end%>
 
-                <h4>Trade: <%=gift%></h4><br><br><br>
-                <%end%>
-              </div>
-            </div>
-
+                        <h4>Trade: <%=gift%></h4>
+                    <%end%>
+                      </div>
+                    </div>
             <%end%>
+
         </div>
       </div>
     </div>
