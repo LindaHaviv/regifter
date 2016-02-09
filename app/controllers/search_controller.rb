@@ -1,9 +1,9 @@
 class SearchController < ApplicationController
   def index
-    @gifts = if params[:query].present?
-               Gift.search(params[:query])
-             else
-               Gift.all
+    if params[:query].present?
+      @gifts = Gift.search(params[:query]).get_all_gifts
+    else
+      @gifts = Gift.get_all_gifts
     end
   end
 

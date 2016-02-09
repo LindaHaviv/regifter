@@ -7,7 +7,6 @@
     <h4><strong>USER: </strong><%= @user.name %></h4>
 
   <% if logged_in? && params[:id].to_i == current_user.id%>
-  <div>
   <p><strong>Email: </strong>
     <%= @user.email %></p><br>
   <p><strong>Address: </strong>
@@ -15,19 +14,16 @@
     <div id="footershow">
         <%= link_to 'Edit User', edit_user_path, class: "btn btn-default" %>
         <%= link_to 'Delete Profile', @user, method: :delete, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
+        <%= link_to "Add a Gift", "/gifts/new", class: "btn btn-default" %>
+        <hr>
     </div>
-          <br><br><br>
-          <hr>
           <% if @gifts == [] %>
-          <h4>Looks like you have no gifts listed.<br> <br><br><%= link_to "Add a Gift", "/gifts/new", class: "btn btn-default" %></h4><br>
-          <hr>
+            <h4>Looks like you have no gifts listed.</h4>
           <% else %>
-          <%= render "my_gifts" %>
+            <%= render "my_gifts" %>
           <% end %>
 
-    <% if @completed_swaps != [] %>
-    <%= render "swaps" %>
-    <% end %>
-
 <% end %>
-</div>
+    <% if @completed_swaps != [] %>
+      <%= render "swaps" %>
+    <% end %>
