@@ -1,11 +1,11 @@
 
 
-
+<div class="container">
 <h2>Your Profile</h2>
 <br>
     <h4><strong>USER: </strong><%= @user.name %></h4>
 
-  <% if logged_in? && params[:id].to_i == current_user.id%>
+<% if logged_in? && params[:id].to_i == current_user.id%>
   <p><strong>Email: </strong>
     <%= @user.email %></p><br>
   <p><strong>Address: </strong>
@@ -23,6 +23,8 @@
           <% end %>
 
 <% end %>
+
     <% if @completed_swaps != [] %>
       <%= render "swaps" %>
     <% end %>
+</div>

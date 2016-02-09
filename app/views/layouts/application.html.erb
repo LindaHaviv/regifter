@@ -27,21 +27,22 @@
   <% end %>
 
 
-
+<!--
     <nav class="side-nav side-nav-left">
       <h2><%= link_to "SWAPR", root_path %></h2>
       <ul class="list-unstyled">
         <li><%= link_to "All Gifts", gifts_path %></li>
         <% Category.all.each do |category| %>
-          <li><%= link_to category.title, gifts_path(category: category.id) %></li>
+          <li><%= link_to category.title, gifts_path(category: category.id)%></li>
         <% end %>
       </ul>
     </nav>
-    <div class="site-overlay"></div>
+    <div class="site-overlay"></div> -->
     <div class="wrapper">
 
       <header>
         <div class="container-fluid">
+
           <div class="row">
             <div class="col-sm-12">
               <div class="menu pull-left" data-toggle="tooltip" data-placement="bottom" title="Menu"><i class="icon ion-ios-more"></i></div>
@@ -59,51 +60,55 @@
                         <% else %>
                           <li><%= link_to "Sign In", signin_path %></li>
                           <li><%= link_to "Sign Up", signup_path %></li>
-                           <%end%>
+                        <%end%>
                     </ul>
                   </li>
                 </ul>
               </div>
+
               <div class="search pull-right">
                 <div class="btn-group">
-
-      <form action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+      <!-- <form action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
                   <a href="/search" data-toggle="dropdown" class="dropdown-toggle"><i class="icon ion-ios-search-strong" data-toggle="tooltip" data-placement="bottom" data-container="body" title="Search"></i></a>
                   <ul class="dropdown-menu pull-right">
-                    <li class="dropdown-triangle"></li>
-                    <li>
-                      <div class="input-group">
-                          <input type="text" name="query" id="query" placeholder="I want to find..." class="form-control">
-                        <div class="input-group-btn">
-                          <input type="submit" name="commit" value="Search" class="btn btn-default">
+                      <li class="dropdown-triangle"></li>
+                      <li>
+                        <div class="input-group">
+                            <input type="text" name="query" id="query" placeholder="I want to find..." class="form-control">
+                          <div class="input-group-btn">
+                            <input type="submit" name="commit" value="Search" class="btn btn-default">
+                          </div>
                         </div>
-                      </div>
-          </form>
+                      </li>
+                    </ul>
+          </form> -->
+</div>
 
-                    </li>
-                  </ul>
+
                 </div>
               </div>
+
             </div>
           </div>
         </div>
+      </div>
       </header>
 
 <!-- Where slideshow used to be -->
-<div class="container">
-   <%= yield %>
-</div>
+  <div class="container">
+     <%= yield %>
+  </div>
 
       <footer>
 
           <div class="row">
+
             <div class="col-sm-2">
               <div class="btn-group dropup info">
                 <button type="button" class="dropdown-toggle">
                   <i class="icon ion-ios-information-outline"></i>
                   <span><%= link_to 'Contact Us', contact_path, {style: "color:white"}  %></span>
                 </button>
-
               </div>
             </div>
 
@@ -131,6 +136,7 @@
                 </ul>
               </div>
             </div>
+
             <div class="col-sm-2">
               <div class="btn-group dropup user-account">
                 <button type="button" data-toggle="dropdown" class="dropdown-toggle">
@@ -146,6 +152,7 @@
                 </ul>
               </div>
             </div>
+
             <div class="col-sm-2">
               <div class="btn-group dropup social">
                 <button type="button" data-toggle="dropdown" class="dropdown-toggle">
@@ -163,6 +170,7 @@
                 </ul>
               </div>
             </div>
+
             <div class="col-sm-2">
               <div class="btn-group dropup powered">
                 <button type="button" data-toggle="dropdown" class="dropdown-toggle">
@@ -178,6 +186,7 @@
                 </ul>
               </div>
             </div>
+
           </div>
 
 
