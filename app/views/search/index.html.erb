@@ -7,18 +7,19 @@
   <% end %>
   <%@gifts.each do |gift| %>
   <div class="col-sm-6 col-md-4">
-    <div class="image product-grid">
-      <%= image_tag gift.image, class:"img-responsive"  %>
-    </div>
-    <div class="thumbnail">
-      <div class="caption">
-        <h3><%=gift.title%></h3>
-        <p>$<%=gift.value%></p>
-        <p><%=gift.description%></p>
-        <a href=<%="/gifts/#{gift.id}"%> class="btn btn-primary" role="button">Details</a>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h3 class="panel-title"><%= link_to gift.title.capitalize, gift %></h3>
+        <br>
+        <%= image_tag gift.image, class:"img-responsive"  %>
+        <div class="thumbnail">
+          <div class="caption">
+            <p><%=gift.title%></p>
+            <a href=<%="/gifts/#{gift.id}"%> class="btn btn-primary" role="button">Details</a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
   <% end %>
 </div>
 </div>

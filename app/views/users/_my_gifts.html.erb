@@ -4,16 +4,14 @@
     <div id=<%=gift.id%> class="col-xs-6 col-md-4">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title"><%= link_to gift.title.capitalize, gift %></h3>
+          <h3 class="panel-title"><%= link_to gift.title.capitalize %></h3>
         </div>
         <div class="panel-body">
-          <figure>
-
             <% if logged_in? && current_user.id != gift.user.id%>
-            <p>Contact <%=gift.user.username%> for more information</p>
-            <%= link_to 'Propose a Swap!', new_gift_request_path(gift), class: "btn btn-primary" %>
-            <%= link_to "Message Seller", conversations_path, class: "btn btn-primary" %>
-            <p style="color:teal;"> Sign in or sign up in order to propose a swap or message a user! </p>
+              <p>Contact <%=gift.user.username%> for more information</p>
+              <%= link_to 'Propose a Swap!', new_gift_request_path(gift), class: "btn btn-primary" %>
+              <%= link_to "Message Seller", conversations_path, class: "btn btn-primary" %>
+              <p style="color:teal;"> Sign in or sign up in order to propose a swap or message a user! </p>
             <%end%>
 
             <%= image_tag gift.image, class: "img-responsive" %><br>
@@ -59,9 +57,7 @@
             </div>
 
             <%end%>
-          </figure>
         </div>
-  </div>
+      </div>
     </div>
 <% end %>
-<div>
