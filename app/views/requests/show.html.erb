@@ -1,18 +1,17 @@
 <div class="container">
-
-<h3>Proposed Swap</h3>
+  <h3>Proposed Swap</h3>
   <div class="col-sm-6">
     <div class="well well-lg">
-    <h4>Item requested: </h4>
-     <h5><%=@request.wanted_gift.title%> </h5><br/>
-      <%= image_tag @request.wanted_gift.image, class:"img-responsive"  %>
+      <h4>Item requested:</h4>
+      <h5><%=@request.wanted_gift.title%></h5><br/>
+      <%= image_tag @request.wanted_gift.image, class:"img-responsive"%>
     </div>
   </div>
   <div class="col-sm-6">
     <div class="well well-lg">
-    <h4>Item offered in exchange: </h4>
-     <h5><%=@request.unwanted_gift.title%></h5><br/>
-    <%= image_tag @request.unwanted_gift.image, class:"img-responsive" %>
+      <h4>Item offered in exchange:</h4>
+      <h5><%=@request.unwanted_gift.title%></h5><br/>
+      <%= image_tag @request.unwanted_gift.image, class:"img-responsive"%>
+    </div>
   </div>
-</div>
 </div>

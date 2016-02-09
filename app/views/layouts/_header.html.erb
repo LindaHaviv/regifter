@@ -15,7 +15,7 @@
   <%= link_to "Messages", conversations_path %>
   <%= link_to "Add a Gift", new_gift_path %>
   <%= link_to "Profile", user_path(current_user) %>
-<% else %>
+  <% else %>
   <%= link_to "Sign In", signin_path %>
   <%= link_to "Sign Up", signup_path %>
   <%end%>
