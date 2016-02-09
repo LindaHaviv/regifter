@@ -22,32 +22,28 @@
 
             <% if logged_in? && params[:id].to_i == current_user.id%>
 
-                <div class="align-bottom col-sm-12">
-                    <div  class="col-xs-4">
+                <div style="padding:0px" class="align-bottom col-sm-12">
+                    <div style="padding:0px" class="col-xs-4">
                       <%= link_to 'Edit', edit_gift_path(gift), class: "btn btn-default" %> &nbsp
                     </div>
-                  <div  class="col-xs-4">
+                  <div style="padding:0px" class="col-xs-4">
                     <%= button_to "Delete", {  remote: true, controller: :gifts, action: "destroy", id: gift.id }, method: :delete,
                     class: "btn btn-default", data: { confirm: "Are you sure?" } %>
                   </div>
-                  <div  class="col-xs-4">
+                  <div style="padding:0px" class="col-xs-4">
                     <% if logged_in? && params[:id].to_i == current_user.id%>
                         <%@swaps.each do |person, gift|%>
                         <%= form_tag(accept_path(@unwanted_gift)) do |f| %>
                           <%=hidden_field_tag :wanted_id, @wanted_gift.id%>
-                          <%=submit_tag 'Trade with'+person, class: "btn btn-primary" %>
+                          <%=submit_tag 'Trade Now', class: "btn btn-primary" %>
                         <%end%>
                     <%end%>
                 </div>
               <%end%>
               </div>
             <% end %>
-</div>
+          </div>
             <div style="clear:both;"></div>
-
-
-
-
         </div>
       </div>
     </div>
