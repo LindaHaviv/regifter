@@ -15,12 +15,6 @@
 
 
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body>
   <% if flash[:error] %>
@@ -39,7 +33,7 @@
       <ul class="list-unstyled">
         <li><%= link_to "All Gifts", gifts_path %></li>
         <% Category.all.each do |category| %>
-          <li><%= link_to category.title, gifts_path(category: category.id) %></li> 
+          <li><%= link_to category.title, gifts_path(category: category.id) %></li>
         <% end %>
       </ul>
     </nav>
@@ -96,9 +90,9 @@
       </header>
 
 <!-- Where slideshow used to be -->
-<!-- <div class="container"> -->
+<div class="container"> 
    <%= yield %>
-<!--  </div> -->
+</div>
 <br><br><br><br><br><br><br>
       <footer>
         <div class="container-fluid">
