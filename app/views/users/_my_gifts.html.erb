@@ -1,55 +1,67 @@
-<h4>Your unwanted gifts:</h4><br>
+<div>
+<h4>Your unwanted gifts:</h4>
 <% @gifts.each do |gift| %>
-<div id=<%=gift.id%> class="gift">
-    <%= gift.title.capitalize %><br>
-    <% if logged_in? && params[:id].to_i == current_user.id%>
-        <div style="float:left;">
-        <%= link_to 'Edit', edit_gift_path(gift), class: "btn btn-default inline" %>
-      </div>
+    <div id=<%=gift.id%> class="col-xs-6 col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= link_to gift.title.capitalize, gift %></h3>
+        </div>
+        <div class="panel-body">
+          <figure>
 
-      <div style="float:left;">
-      <%= button_to "Delete", {  remote: true, controller: :gifts, action: "destroy", id: gift.id }, method: :delete,
-                          class: "btn btn-default inline", data: { confirm: "Are you sure?" } %>
-      </div>
+            <% if logged_in? && current_user.id != gift.user.id%>
+            <p>Contact <%=gift.user.username%> for more information</p>
+            <%= link_to 'Propose a Swap!', new_gift_request_path(gift), class: "btn btn-primary" %>
+            <%= link_to "Message Seller", conversations_path, class: "btn btn-primary" %>
+            <p style="color:teal;"> Sign in or sign up in order to propose a swap or message a user! </p>
+            <%end%>
 
+            <%= image_tag gift.image, class: "img-responsive" %><br>
 
-      <div style="clear:both;"></div>
-      <br/>
-    <% end %>
+            <% if logged_in? && params[:id].to_i == current_user.id%>
+            <div class="align-bottom">
+              <div style="float:left;">
+                <%= link_to 'Edit', edit_gift_path(gift), class: "btn btn-default" %> &nbsp
+              </div>
+              <div style="float:right;">
+                <%= button_to "Delete", {  remote: true, controller: :gifts, action: "destroy", id: gift.id }, method: :delete,
+                class: "btn btn-default", data: { confirm: "Are you sure?" } %>
+              </div>
+            </div>
+            <% end %>
+            <div style="clear:both;"></div>
 
-  <% if logged_in? && current_user.id != gift.user.id%>
-    <p>Contact <%=gift.user.username%> for more information</p>
-    <%= link_to 'Propose a Swap!', new_gift_request_path(gift), class: "btn btn-primary" %>
-    <%= link_to "Message Seller", conversations_path, class: "btn btn-primary" %>
-    <p style="color:teal;"> Sign in or sign up in order to propose a swap or message a user! </p>
-  <%end%>
+            <%@swaps={}%>
 
-        <%= image_tag gift.image, size: "200x200", class: "style_image" %><br>
+            <%@unwanted_gift = nil%>
+            <%@wanted_gift = nil%>
 
-        <%@swaps={}%>
+            <%gift.requests_wanted.map do |x| %>
+            <%@swaps[x.unwanted_gift.user.username]= x.unwanted_gift.title %>
+            <%@unwanted_gift= x.unwanted_gift%>
+            <%@wanted_gift = x.wanted_gift%>
+            <%end%>
 
-        <%@unwanted_gift = nil%>
-        <%@wanted_gift = nil%>
+            <% if logged_in? && params[:id].to_i == current_user.id%>
+            <%@swaps.each do |person, gift|%>
+            <div class="align-bottom">
+              <div class="align-bottom">
+                <h4>Swap pending. Proposed by: <%=person%></h4><br>
 
-        <%gift.requests_wanted.map do |x| %>
-          <%@swaps[x.unwanted_gift.user.username]= x.unwanted_gift.title %>
-          <%@unwanted_gift= x.unwanted_gift%>
-          <%@wanted_gift = x.wanted_gift%>
-        <%end%>
+                <%= form_tag(accept_path(@unwanted_gift)) do |f| %>
+                <%=hidden_field_tag :wanted_id, @wanted_gift.id%>
+                <%=submit_tag 'View Trade', class: "btn btn-primary" %>
+                <%end%>
 
-
-
-          <% if logged_in? && params[:id].to_i == current_user.id%>
-
-              <%@swaps.each do |person, gift|%>
-                <h4>Swap pending. Proposed by: <%=person%><br></h4>
-                  <%= form_tag(accept_path(@unwanted_gift)) do |f| %>
-                    <%=hidden_field_tag :wanted_id, @wanted_gift.id%>
-                    <%=submit_tag 'View Trade', class: "btn btn-primary" %>
-                  <%end%>
                 <h4>Trade: <%=gift%></h4><br><br><br>
-              <%end%>
-          <%end%>
-      </div>
-      <br/>
-  <% end %>
+                <%end%>
+              </div>
+            </div>
+
+            <%end%>
+          </figure>
+        </div>
+  </div>
+    </div>
+<% end %>
+<div>

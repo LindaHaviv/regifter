@@ -1,26 +1,4 @@
-// p.accent {
-//   color: #59c2e6;
-// }
 
-// .btn-file {
-//   position: relative;
-//   overflow: hidden;
-// }
-// .btn-file input[type=file] {
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   min-width: 100%;
-//   min-height: 100%;
-//   font-size: 100px;
-//   text-align: right;
-//   filter: alpha(opacity=0);
-//   opacity: 0;
-//   outline: none;
-//   background: white;
-//   cursor: inherit;
-//   display: block;
-// }
 .hide-me{
   opacity: 0;
 
@@ -33,4 +11,25 @@
 .product-grid{
   min-height: 200px;
   max-height: 400px;
+
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.align-bottom {
+  position: absolute;
+  bottom: 10px;
+}
+
+.top-space{
+  margin-top: 20px;
+}
+.clear {
+  clear: both;
+}
+
+.panel:hover {
+  opacity: .4;
 }

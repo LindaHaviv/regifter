@@ -1,3 +1,4 @@
+<div class="col-xs-12">
 <h4>Your Completed Swaps </h4>
   <% @completed_swaps.each do |swap| %>
     <% @gift = Gift.find(swap.item_id) %>
@@ -55,7 +56,7 @@
                 <% if @new_owner == current_user %>
                 <p>You</p>
                 <% else %>
-            
+
                 <p><%=@new_owner.username %></p>
                 <% end %>
               </td>
@@ -64,3 +65,4 @@
         </table>
       </div>
 <% end %>
+</div>

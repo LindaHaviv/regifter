@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-sm-6">
           <ul class="breadcrumb">
-
+            <li><%= link_to "", root_path, class:"icon ion-ios-home-outline" %></li>
             <li><%= link_to "Gifts", gifts_path %></li>
             <li><a href="#"><%=@gift.title%></a></li>
           </ul>
@@ -44,7 +44,7 @@
               </tr>
               <tr>
                 <td>Value:</td>
-                <td><%= @gift.value %></td>
+                <td>$<%= @gift.value %></td>
               </tr>
               <tr>
                 <td>Categories:</td>
