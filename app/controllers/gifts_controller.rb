@@ -1,6 +1,12 @@
 class GiftsController < ApplicationController
   skip_before_action(:authenticate!, except: [:new, :create])
+
   def index
+    @categories = Category.all 
+    @gifts = Gift.all 
+    if params[:category].present?
+      @gifts = @gifts.joins(:gift_categories).where("gift_categories.category_id" => params[:category]) 
+    end
   end
 
   def new
@@ -16,9 +22,8 @@ class GiftsController < ApplicationController
 
   def create
     @user = current_user
-    @gift = Gift.new(gift_params)
+    @gift = @user.gifts.build(gift_params)
     if @gift.save
-      @user.gifts<<@gift
       @gifts = @user.get_user_gifts
       redirect_to @user,:notice => "Item added!"
     else

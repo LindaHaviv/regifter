@@ -1,7 +1,18 @@
+
+<!--   <div class="row">
+    <div class="col-md-12">
+      Categories:
+      <% @categories.each do |category| %>
+        <span> </span><%= link_to category.title, gifts_path(category: category.id) %> 
+      <% end %>
+    </div>
+  </div>   -->
+
+
   
 <div class="container">
   <div class="row">
-    <%Gift.get_all_gifts.each do |gift|%>
+    <%@gifts.each do |gift|%>
     <div id=<%=gift.id%> class="product-grid col-xs-6 col-sm-3">
       <div class="product-thumb" data-sr>
         <figure>

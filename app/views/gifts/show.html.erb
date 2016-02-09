@@ -46,6 +46,10 @@
                 <td>Value:</td>
                 <td><%= @gift.value %></td>
               </tr>
+              <tr>
+                <td>Categories:</td>
+                <td><%= @gift.categories.pluck(:title).join(", ")%></td>
+              </tr>
             </table>
           </div>
           <hr>
