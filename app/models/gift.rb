@@ -24,12 +24,8 @@ class Gift < ActiveRecord::Base
   end
 
   def self.get_all_gifts
-    @gifts =  self.all.select do |gift|
-      if Swap.find_by(item_id: gift.id) == nil
-        gift
-      end
-    end
-    @gifts
+    self.joins("LEFT OUTER JOIN swaps ON gifts.id = swaps.item_id")
+        .where(swaps: {item_id: nil})
   end
 
 end
