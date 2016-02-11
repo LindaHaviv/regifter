@@ -35,7 +35,7 @@
                         <%@swaps.each do |person, gift|%>
                         <%= form_tag(accept_path(@unwanted_gift)) do |f| %>
                           <%=hidden_field_tag :wanted_id, @wanted_gift.id%>
-                          <%=submit_tag 'Trade Now', class: "btn btn-primary" %>
+                          <%=submit_tag 'Pending!', class: "btn btn-primary" %>
                         <%end%>
                     <%end%>
                 </div>
