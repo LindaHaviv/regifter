@@ -3,9 +3,9 @@ class GiftsController < ApplicationController
 
   def index
     @categories = Category.all 
-    @gifts = Gift.get_all_gifts 
+    @gifts = Gift.get_all_gifts
     if params[:category].present?
-      @gifts = Gift.get_all_gifts.joins(:gift_categories).where("gift_categories.category_id" => params[:category]) 
+      @gifts = Gift.get_all_gifts.joins(:gift_categories).where("gift_categories.category_id" => params[:category])
     end
   end
 
@@ -20,7 +20,7 @@ class GiftsController < ApplicationController
     end
   end
 
-  def create   
+  def create
     @user = current_user
     @gift = @user.gifts.build(gift_params)
     if @gift.save
