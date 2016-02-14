@@ -1,5 +1,10 @@
 <br><br>
 <div class=”container”>
+  <ul class="breadcrumb">
+    <li><%= link_to "", gifts_path, class:"icon ion-ios-home-outline" %></li>
+    <li><%= link_to "Profile", user_path(current_user) %></li>
+  </ul>
+
   <h2>Mailbox</h2>
   <div class=”ui list”>
     <div class=”item”>
