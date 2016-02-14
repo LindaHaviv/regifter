@@ -3,9 +3,9 @@
   <% if @over_ten %>
   <%= link_to 'Show Previous', '?m=all' %>
   <% end %>
-</div>
-
-<div class="ui segment messages">
+<h3>
+Now talking to <%=Conversation.find(params[:conversation_id]).sender.name%>:</h3><br>
+<div >
   <% @messages.each do |message| %>
     <% if message.body %>
       <%= render message %>
@@ -14,16 +14,20 @@
 </div>
 
 <div>
-  <%= form_for [@conversation, @message], html: {class: "ui reply form"}, remote: true do |f| %>
+  <%= form_for [@conversation, @message], remote: true do |f| %>
     <div class="field">
       <%= f.text_area :body, class: "form-control" %>
       <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
     </div>
 
-    <div>
-      <%= f.submit "Send", class: "ui blue labeled submit icon button" %>
-    </div>
+
+
+              <div class="actions">
+                <%= f.submit "Send", class: "btn btn-primary"%>
+                  <%= link_to 'Back', user_path(current_user), {style: "color:white", class:"btn btn-default"} %>
+                  <%= link_to 'Mail', conversations_path, {style: "color:white", class:"btn btn-default"} %><br><br>
+              </div>
   <% end %>
-  <br>
-  <%= link_to 'Go back home page!', root_path %>
+
+</div>
 </div>

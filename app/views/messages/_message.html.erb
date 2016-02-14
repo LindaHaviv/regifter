@@ -1,12 +1,10 @@
 <div class="item">
   <div class="content">
     <div class="header pretty_username">
-      <strong><h4 style="color:#00BFFF;"><%= message.user.name%></h4></strong>
-      <%= message.message_time %>
+      <strong><h4><%= message.user.name%></h4></strong><%= message.message_time %>
     </div>
     <div class="list">
-      <div class="pretty_text">
-        <i class="right triangle icon"></i>
+      <div>
         <%= message.body %>
       </div>
     </div>

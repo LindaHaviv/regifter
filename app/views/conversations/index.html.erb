@@ -1,8 +1,9 @@
-<br><br>
-<div class=”container”>
+
+
+<div class="container">
   <h2>Mailbox</h2>
-  <div class=”ui list”>
-    <div class=”item”>
+      <div class="ui list">
+      <div class="item">
       <% @conversations.each do |conversation| %>
       <% if conversation.sender_id == current_user.id ||      conversation.recipient_id == current_user.id %>
       <% if conversation.sender_id == current_user.id %>
@@ -16,4 +17,3 @@
     </div>
   </div>
 </div>
-<br><br>
