@@ -1,13 +1,15 @@
+
 <br><br>
-<div class=”container”>
+<div class="container">
   <ul class="breadcrumb">
     <li><%= link_to "", gifts_path, class:"icon ion-ios-home-outline" %></li>
     <li><%= link_to "Profile", user_path(current_user) %></li>
   </ul>
 
+
   <h2>Mailbox</h2>
-  <div class=”ui list”>
-    <div class=”item”>
+      <div class="ui list">
+      <div class="item">
       <% @conversations.each do |conversation| %>
       <% if conversation.sender_id == current_user.id ||      conversation.recipient_id == current_user.id %>
       <% if conversation.sender_id == current_user.id %>
@@ -21,4 +23,3 @@
     </div>
   </div>
 </div>
-<br><br>
