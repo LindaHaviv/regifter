@@ -100,7 +100,7 @@
 <div class="container-fluid">
           <div class="row">
 
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="btn-group dropup info">
                 <button type="button" class="dropdown-toggle">
                   <i class="icon ion-ios-information-outline"></i>
@@ -109,66 +109,18 @@
               </div>
             </div>
 
-            <div class="col-sm-2">
-              <div class="btn-group dropup service">
-                <button type="button" class="dropdown-toggle">
-                  <i class="icon ion-ios-people-outline"></i>
-                  <span><%= link_to 'Customer Service', contact_path, {style: "color:white"} %></span>
-                </button>
-              </div>
-            </div>
-
-            <div class="col-sm-2">
-              <div class="btn-group dropup extra">
-                <button type="button" data-toggle="dropdown" class="dropdown-toggle">
-                  <i class="icon ion-ios-flask-outline"></i>
-                  <span>Extras</span>
-                </button>
-                <ul class="dropdown-menu pull-right">
-                  <li class="dropdown-triangle"></li>
-                  <li><a href="#">Brands</a></li>
-                  <li><a href="#">Gift Vouchers</a></li>
-                  <li><a href="#">Affiliates</a></li>
-                  <li><a href="#">Specials</a></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="col-sm-2">
-              <div class="btn-group dropup user-account">
-                <button type="button" data-toggle="dropdown" class="dropdown-toggle">
+            <div class="col-sm-4">
+              <div class="btn-group dropup user-account" style="padding-bottom: 45px;">
                   <i class="icon ion-ios-person-outline"></i>
-                  <span>My Account</span>
-                </button>
-                <ul class="dropdown-menu pull-right">
-                  <li class="dropdown-triangle"></li>
-                  <li><a href="#">My Account</a></li>
-                  <li><a href="#">Order History</a></li>
-                  <li><a href="#">Wishlist</a></li>
-                  <li><a href="#">Newsletter</a></li>
-                </ul>
+                  <% if logged_in? %>
+                  <span><%= link_to 'My Account', user_path(current_user), {style: "color:white"}  %></span>
+                  <% else %>
+                  <span><%= link_to 'Login', signin_path, {style: "color:white"}  %></span>
+                  <% end %>
               </div>
             </div>
 
-            <div class="col-sm-2">
-              <div class="btn-group dropup social">
-                <button type="button" data-toggle="dropdown" class="dropdown-toggle">
-                  <i class="icon ion-ios-world-outline"></i>
-                  <span>Social</span>
-                </button>
-                <ul class="dropdown-menu pull-right">
-                  <li class="dropdown-triangle"></li>
-                  <li><a href="https://www.facebook.com/">Facebook</a></li>
-                  <li><a href="https://twitter.com/">Twitter</a></li>
-                  <li><a href="https://www.pinterest.com/">Pinterest</a></li>
-                  <li><a href="https://plus.google.com/">Google Plus</a></li>
-                  <li><a href="https://github.com/">Github</a></li>
-                  <li><a href="skype:******?call">Skype</a></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="btn-group dropup powered">
                 <button type="button" data-toggle="dropdown" class="dropdown-toggle">
                   <i class="icon ion-ios-bolt-outline"></i>

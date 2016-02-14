@@ -2,10 +2,10 @@ class GiftsController < ApplicationController
   skip_before_action(:authenticate!, except: [:new, :create])
 
   def index
-    @categories = Category.all 
+    @categories = Category.all
     @gifts = Gift.get_all_gifts
     if params[:category].present?
-      @gifts = Gift.get_all_gifts.joins(:gift_categories).where("gift_categories.category_id" => params[:category])
+      @gifts = @gifts.joins(:gift_categories).where("gift_categories.category_id" => params[:category])
     end
   end
 
