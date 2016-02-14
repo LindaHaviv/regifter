@@ -1,6 +1,11 @@
 
 
 <div class="container">
+  <ul class="breadcrumb">
+    <li><%= link_to "", gifts_path, class:"icon ion-ios-home-outline" %></li>
+    <li><%= link_to "Profile", user_path(@user) %></li>
+  </ul>
+
 <h2>Your Profile</h2>
 <br>
     <h4><strong>USER: </strong><%= @user.name %></h4>
