@@ -1,29 +1,29 @@
 
 <div class="container">
-  <ul class="breadcrumb">
-    <li><%= link_to "", gifts_path, class:"icon ion-ios-home-outline" %></li>
-    <li><%= link_to "Profile", user_path(current_user) %></li>
-  </ul>
+
   <% if @over_ten %>
   <%= link_to 'Show Previous', '?m=all' %>
   <% end %>
+<div class = "messages">
 <h3>
 Now talking to <%=Conversation.find(params[:conversation_id]).sender.name%>:</h3><br>
-<div >
-  <% @messages.each do |message| %>
-    <% if message.body %>
-      <%= render message %>
+
+  <div >
+    <% @messages.each do |message| %>
+      <% if message.body %>
+        <%= render message %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
 
 <div>
+
   <%= form_for [@conversation, @message], remote: true do |f| %>
     <div class="field">
-      <%= f.text_area :body, class: "form-control" %>
+      <%= f.text_area :body, class: "form-control", id:"message_body" %>
       <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
     </div>
-
 
 
               <div class="actions">
