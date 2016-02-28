@@ -6,8 +6,11 @@
   <% end %>
 <div class = "messages">
 <h3>
+  <% if Conversation.find(params[:conversation_id]).recipient.name == current_user.name%>
+  Now talking to <%=Conversation.find(params[:conversation_id]).sender.name%>:</h3><br>
+  <%else%>
 Now talking to <%=Conversation.find(params[:conversation_id]).recipient.name%>:</h3><br>
-
+<%end%>
   <div >
     <% @messages.each do |message| %>
       <% if message.body %>
