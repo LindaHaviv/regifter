@@ -1,15 +1,21 @@
 
 <div class="container">
-
+  <ul class="breadcrumb">
+    <li><%= link_to "", root_path, class:"icon ion-ios-home-outline" %></li>
+    <li><%= link_to "Gifts", gifts_path %></li>
+    <li><%=link_to "Back to Gift", gift_path(params[:format]) %></li>
+  </ul>
   <% if @over_ten %>
   <%= link_to 'Show Previous', '?m=all' %>
   <% end %>
 <div class = "messages">
 <h3>
   <% if Conversation.find(params[:conversation_id]).recipient.name == current_user.name%>
+  <%other=Conversation.find(params[:conversation_id]).sender.id%>
   Now talking to <%=Conversation.find(params[:conversation_id]).sender.name%>:</h3><br>
   <%else%>
 Now talking to <%=Conversation.find(params[:conversation_id]).recipient.name%>:</h3><br>
+<%other=Conversation.find(params[:conversation_id]).recipient.id%>
 <%end%>
   <div >
     <% @messages.each do |message| %>
@@ -31,7 +37,7 @@ Now talking to <%=Conversation.find(params[:conversation_id]).recipient.name%>:<
 
               <div class="actions">
                 <%= f.submit "Send", class: "btn btn-primary"%>
-                  <%= link_to 'Back', gifts_path(current_user), {style: "color:white", class:"btn btn-default"} %>
+                <%= link_to 'Back', gift_path(params[:format]) , {style: "color:white", class:"btn btn-default"} %> 
                   <%= link_to 'Mail', conversations_path, {style: "color:white", class:"btn btn-default"} %><br><br>
               </div>
   <% end %>
