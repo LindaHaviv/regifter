@@ -6,7 +6,7 @@
   <% end %>
 <div class = "messages">
 <h3>
-Now talking to <%=Conversation.find(params[:conversation_id]).sender.name%>:</h3><br>
+Now talking to <%=Conversation.find(params[:conversation_id]).recipient.name%>:</h3><br>
 
   <div >
     <% @messages.each do |message| %>
