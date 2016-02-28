@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get 'contact', to: "home#contact"
 
-  get 'signout', to: "sessions#destroy"
+  delete 'signout', to: "sessions#destroy"
 
   get "signup", to: "users#new"
 
