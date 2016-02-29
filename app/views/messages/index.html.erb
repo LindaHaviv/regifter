@@ -3,7 +3,7 @@
   <ul class="breadcrumb">
     <li><%= link_to "", root_path, class:"icon ion-ios-home-outline" %></li>
     <li><%= link_to "Gifts", gifts_path %></li>
-    <li><%=link_to "Back to Gift", gift_path(params[:format]) %></li>
+
   </ul>
   <% if @over_ten %>
   <%= link_to 'Show Previous', '?m=all' %>
@@ -37,7 +37,7 @@ Now talking to <%=Conversation.find(params[:conversation_id]).recipient.name%>:<
 
               <div class="actions">
                 <%= f.submit "Send", class: "btn btn-primary"%>
-                <%= link_to 'Back', gift_path(params[:format]) , {style: "color:white", class:"btn btn-default"} %> 
+
                   <%= link_to 'Mail', conversations_path, {style: "color:white", class:"btn btn-default"} %><br><br>
               </div>
   <% end %>
