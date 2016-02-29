@@ -32,7 +32,7 @@
         <% elsif logged_in? %>
         <p class="accent"> This item belongs to you </p>
         <% else %>
-        <p class="accent"> <%= link_to "Sign in", signup_path %> or <%= link_to "sign up", signin_path %> to propose a swap or message a user </p>
+        <p class="accent"> <%= link_to "Sign in", signin_path %> or <%= link_to "sign up", signup_path %> to propose a swap or message a user </p>
         <% end %>
         </div>
 
