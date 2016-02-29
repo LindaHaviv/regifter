@@ -743,12 +743,9 @@ header i:hover {
  * Footer
  */
 
-<<<<<<< HEAD
 
-footer .col-sm-2 {
-=======
+
 footer .col-sm-4 {
->>>>>>> abf4998c79086adbdd84687bce81000d30c9c502
   padding-left: 0;
   padding-right: 0;
 }

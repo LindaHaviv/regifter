@@ -14,18 +14,18 @@
   <%= form_for(:session, url: signin_path, class: "form-horizontal") do |f| %>
       <div class = "col-sm-12">
          <div class="form-group required">
-           <%= f.label "Username", class: "col-sm-2 control-label" %>
-            <%= f.text_field :username, class: "form-control", icon: "user" %><br>
+           <%= f.label "Username", class: "col-sm-2 control-label"%>
+            <%= f.text_field :username, class: "form-control", icon: "user", value:"visitor"  %><br>
           </div>
 
           <div class="form-group required">
             <%= f.label "Email:", class: "col-sm-2 control-label" %>
-            <%= f.text_field :email, placeholder:'name@example.com', class: "form-control"  %><br>
+            <%= f.text_field :email, placeholder:'name@example.com', class: "form-control", value:'visitor@mail.com'  %><br>
           </div>
 
           <div class="form-group required">
             <%= f.label "Password", class: "col-sm-2 control-label" %>
-            <%= f.password_field :password, class: "form-control" %><br>
+            <%= f.password_field :password, class: "form-control", value:'1234567890' %><br>
           </div>
 
          <div>
@@ -39,5 +39,3 @@
           <% end %><br>
       </div>
 </div>
-
-
