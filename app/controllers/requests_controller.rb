@@ -5,9 +5,7 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.create(request_params)
-    # binding.pry
     @inv_request = Request.where(wanted_id: @request[:unwanted_id], unwanted_id: @request[:wanted_id])
-  # binding.pry
     if @inv_request != []
 
       Swap.implement(@request)
