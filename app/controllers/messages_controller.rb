@@ -1,8 +1,7 @@
 class MessagesController < ApplicationController
   def index
     set_conversation
-    @messages = @conversation.messages
-    if @messages.length > 10
+     if @messages.length > 10
       @over_ten = true
       @messages = @messages[-10..-1]
     end
@@ -25,7 +24,7 @@ class MessagesController < ApplicationController
     @message = @conversation.messages.new(message_params)
     if @message.save
       respond_to do |format|
-        format.html { redirect_to conversation_messages_path(@conversation) }
+        format.html {redirect_to conversation_messages_path(@conversation)}
         format.js {}
       end
     end
