@@ -49,6 +49,7 @@ class GiftsController < ApplicationController
   end
 
   def accept
+    
     @wanted_id = params[:wanted_id]
     @gift = Gift.find(params[:id])
     @accept = true

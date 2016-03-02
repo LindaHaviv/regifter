@@ -5,16 +5,15 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.create(request_params)
-    @inv_request = Request.where(wanted_id: @request[:unwanted_id], unwanted_id: @request[:wanted_id])
-    if @inv_request != []
-
-      Swap.implement(@request)
-      destroy_pending_requests(@request.wanted_id, @request.unwanted_id)
-      # notify_swappers
-      redirect_to user_path(current_user) and return
-    end
     redirect_to @request
   end
+
+def accept
+  @request = Request.create(request_params)
+  Swap.implement(@request)
+  destroy_pending_requests(@request.wanted_id, @request.unwanted_id)
+  redirect_to user_path(current_user) and return
+end
 
   def show
     @request = Request.find(params[:id])
