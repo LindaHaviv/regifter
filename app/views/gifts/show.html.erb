@@ -21,9 +21,11 @@
                       <%=submit_tag "Message "+@gift.user.username+" here", class: "btn btn-primary btn-block"%>
                   <%end%>
 <!-- accept swap -->
-
+<%unwanted_id=params[:wanted_id]%>
+<%wanted_id=@gift.id%>
               <% if @accept %>
-                  <%=render "accept"%>
+              <%=binding.pry%>
+                  <%= link_to 'Accept Swap!', accept_request_path(unwanted_id: unwanted_id, wanted_id: wanted_id), class: "btn btn-primary btn-block" %>
               <%else%>
                   <%= link_to 'Propose Swap!', new_gift_request_path(@gift), class: "btn btn-primary btn-block" %>
               <%end%>

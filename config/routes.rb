@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   post "signin", to: "sessions#create"
   get "auth", to: "users#auth", as: "auth"
   resources :users, :categories, :search, :gifts, :requests, :swaps
-
+get "accept_request", to: "requests#accept"
 
   resources :gifts do
     resources :requests
