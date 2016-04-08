@@ -21,9 +21,9 @@
 
 <div class="container showcase">
   <div class="row">
-    <%@gifts.each do |gift|%>
+    <%@gifts.reverse.each do |gift|%>
     <div id=<%=gift.id%> class="product-grid col-xs-6 col-sm-3 product-grid">
-      <div class="product-thumb" data-sr>
+      <!-- <div class="product-thumb" data-sr> -->
         <figure>
           <div class="image">
             <%= image_tag gift.image, class:"img-responsive"  %>
@@ -37,7 +37,7 @@
             </div>
           </figcaption>
         </figure>
-      </div>
+      <!-- </div> -->
     </div>
     <%end%>
   </div>
