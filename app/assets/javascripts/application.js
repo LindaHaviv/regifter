@@ -15,8 +15,10 @@
 
 // =require jquery.min
 // =require jquery_ujs
+
 // =require bootstrap.min
 // =require owl-carousel/owl.carousel.min
 // =require smoothscroll
 // =require scrollreveal.min
 // =require script
+// =require masonry/dist/masonry.pkgd.min

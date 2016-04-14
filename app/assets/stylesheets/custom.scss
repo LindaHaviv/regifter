@@ -9,11 +9,13 @@
 }
 
 .product-grid{
-  min-height: 200px;
+  min-height: 50px;
   max-height: 400px;
 
 }
-
+.grid-item {
+  width: 200px;
+}
 .center {
   margin: 0 auto;
 }
@@ -28,4 +30,25 @@
 }
 .clear {
   clear: both;
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 10;
+  height: 0;
+}
+
+.clearfix {
+  display: inline-block;
+}
+
+html[xmlns] .clearfix {
+   display: block;
+}
+
+* html .clearfix {
+   height: 1%;
 }

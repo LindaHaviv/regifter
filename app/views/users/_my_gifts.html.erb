@@ -1,14 +1,29 @@
 <h4>Your unwanted gifts:</h4>
+<div class="grid">
 <% @gifts.each do |gift| %>
-    <div id=gift.id class="col-xs-6 col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title"><%= link_to gift.title.capitalize %></h3>
-        </div>
-        <div class="panel-body">
 
-<div>
-            <%= image_tag gift.image, class: "img-responsive" %><br>
+    <div id=<%=gift.id%> class="product-grid col-xs-6 col-md-4 grid-item panel panel-default">
+        <div class="product-thumb" data-sr >
+          <figure >
+            <!-- <div class="panel-heading">
+              <h3 class="panel-title"><%= link_to gift.title.capitalize %></h3>
+            </div> -->
+            <!-- <div class="panel-body"> -->
+
+          <div class="image">
+                      <%= image_tag gift.image, class: "img-responsive" %>
+            </div>
+                  <figcaption>
+                    <div class="name">
+                      <%= link_to  gift.title, gift_path(gift) %>
+                    </div>
+                    <div class="price">
+                      $<%= gift.value %>
+                    </div>
+                  </figcaption>
+            </figure>
+          </div>
+<!-- </div> -->
             <%@swaps={}%>
 
             <%@unwanted_gift = nil%>
@@ -20,32 +35,30 @@
               <%@wanted_gift = x.wanted_gift%>
             <%end%>
 
-            <% if logged_in? && params[:id].to_i == current_user.id%>
+                <% if logged_in? && params[:id].to_i == current_user.id%>
 
-                <div style="padding:0px">
-                    <div style="padding:0px; margin-bottom: 10px;">
-                      <%= link_to 'Edit', edit_gift_path(gift), class: "col-xs-12 btn btn-default" %>
-                    </div>
-                    <br>
-                  <div style="padding:0px; margin-bottom: 10px;">
-                    <%= button_to "Delete", {  remote: true, controller: :gifts, action: "destroy", id: gift.id }, method: :delete,
-                    class: "col-xs-12 btn btn-default", data: { confirm: "Are you sure?" } %>
-                  </div>
-                  <div style="padding:0px">
-                    <% if logged_in? && params[:id].to_i == current_user.id%>
-                        <%@swaps.each do |person, gift|%>
-                        <%= form_tag(accept_path(@unwanted_gift)) do |f| %>
-                          <%=hidden_field_tag :wanted_id, @wanted_gift.id%>
-                          <%=submit_tag 'Pending!', class: "col-xs-12 btn btn-primary" %>
+                  
+                        <div style="margin-bottom: 200px;">
+                          <%= link_to 'Edit', edit_gift_path(gift), class: "col-xs-12 btn btn-default" %>
+
+                        <%= button_to "Delete", {  remote: true, controller: :gifts, action: "destroy", id: gift.id }, method: :delete,
+                        class: "col-xs-12 btn btn-default", data: { confirm: "Are you sure?" } %>
+
+                        <% if logged_in? && params[:id].to_i == current_user.id%>
+                            <%@swaps.each do |person, gift|%>
+                            <%= form_tag(accept_path(@unwanted_gift)) do |f| %>
+                              <%=hidden_field_tag :wanted_id, @wanted_gift.id%>
+                              <%=submit_tag 'Pending!', class: "col-xs-12 btn btn-primary" %>
+                            <%end%>
                         <%end%>
-                    <%end%>
-                </div>
-              <%end%>
-              </div>
-            <% end %>
-          </div>
-            <div style="clear:both;"></div>
+
+                  <%end%>
+
+                <% end %>
+</div>
+
         </div>
-      </div>
-    </div>
+
 <% end %>
+</div>
+<div class="clearfix"></div>
