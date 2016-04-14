@@ -144,13 +144,14 @@
   </div>
 
 
-    <span id="home"></span>
+    <!-- <span id="home"></span> -->
 
    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-   
+
     <script>
     $(document).ready(function() {
       // Main banners slideshow
+
       $("#slideshow").owlCarousel({
         items: 6,
         autoPlay: 6000,
@@ -160,14 +161,18 @@
         navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
         pagination: true
       });
+
       // scrollReveal plugin
       window.sr = new scrollReveal();
     });
-    $('.grid').masonry({
-      // options
-    itemSelector: '.grid-item',
-    columnWidth: 200
+    $(window).load(function(){
+      $('.grid').masonry({
+        // options
+      itemSelector: '.grid-item',
+      columnWidth: 200
+      });
     });
+
     </script>
   </body>
 </html>
