@@ -8,12 +8,12 @@ class RequestsController < ApplicationController
     redirect_to @request
   end
 
-def accept
-  @request = Request.create(request_params)
-  Swap.implement(@request)
-  destroy_pending_requests(@request.wanted_id, @request.unwanted_id)
-  redirect_to user_path(current_user) and return
-end
+  def accept
+    @request = Request.create(request_params)
+    Swap.implement(@request)
+    destroy_pending_requests(@request.wanted_id, @request.unwanted_id)
+    redirect_to user_path(current_user) and return
+  end
 
   def show
     @request = Request.find(params[:id])
@@ -23,7 +23,6 @@ end
     @requests = Request.where (["wanted_id= ? or unwanted_id = ? or wanted_id = ? or unwanted_id = ?", id1, id2, id1, id2])
     @requests.destroy_all
   end
-
 
   private
 
